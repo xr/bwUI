@@ -1,0 +1,26 @@
+{
+  "name": "bonusway-ui",
+  "version": "0.0.1",
+  "description": "bonusway ui library",
+  "main": "new_routes.js",
+  "scripts": {
+    "watch:sass": "./node_modules/.bin/node-sass sass/main.scss style.css -w",
+    "devserver": "./node_modules/.bin/live-server",
+    "start": "./node_modules/.bin/npm-run-all --parallel devserver watch:sass",
+    "build": "./node_modules/.bin/npm-run-all compile:sass prefix:css compress:css",
+
+    "compile:sass": "node-sass sass/main.scss style.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' style.css -o style.prefix.css",
+    "compress:css": "./node_modules/.bin/node-sass style.prefix.css style.min.css --output-style compressed"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": "git@int.gitlab.bonusway.com:ui/bwUI.git",
+  "devDependencies": {
+    "autoprefixer": "^8.0.0",
+    "live-server": "^1.2.0",
+    "node-sass": "^4.7.2",
+    "npm-run-all": "^4.1.2",
+    "postcss-cli": "^5.0.0"
+  }
+}
