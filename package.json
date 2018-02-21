@@ -4,20 +4,22 @@
   "description": "bonusway ui library",
   "main": "new_routes.js",
   "scripts": {
-    "watch:sass": "./node_modules/.bin/node-sass sass/main.scss style.css -w",
+    "watch:sass": "./node_modules/.bin/node-sass sass/main.scss css/style.css -w",
     "devserver": "./node_modules/.bin/live-server",
     "start": "./node_modules/.bin/npm-run-all --parallel devserver watch:sass",
-    "build": "./node_modules/.bin/npm-run-all compile:sass prefix:css compress:css",
-
-    "compile:sass": "node-sass sass/main.scss style.css",
-    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' style.css -o style.prefix.css",
-    "compress:css": "./node_modules/.bin/node-sass style.prefix.css style.min.css --output-style compressed"
+    "build": "./node_modules/.bin/npm-run-all compile:sass concat:css prefix:css compress:css",
+    
+    "compile:sass": "node-sass sass/main.scss css/style.comp.css",
+    "concat:css": "concat -o css/style.concat.css css/fonts/fonts.css css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.concat.css -o css/style.prefix.css",
+    "compress:css": "./node_modules/.bin/node-sass css/style.prefix.css css/style.css --output-style compressed"
   },
   "author": "",
   "license": "ISC",
   "repository": "git@int.gitlab.bonusway.com:ui/bwUI.git",
   "devDependencies": {
     "autoprefixer": "^8.0.0",
+    "concat": "^1.0.3",
     "live-server": "^1.2.0",
     "node-sass": "^4.7.2",
     "npm-run-all": "^4.1.2",
