@@ -1,6 +1,7 @@
 ## Principles
 
 Build a modern UI library that cares about:
+
 	- responsive
 		- suitable for all countries (widths, different languages etc)
 		- fluid layout
