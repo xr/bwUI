@@ -28,18 +28,22 @@ Build a modern UI library that cares about:
 
 ### Architecture (6-1 patterns which derived from 7-1 patterns)
 
-- folder naming all plural
-- partial file naming all singular
-- be aware of the cascading order
+- folder/file naming prefer plural
+- partial file start with _
+- be aware of the cascading order when import the partial files
 
 ```
 sass/
 |
 |– abstracts/
-|   |– _reset.scss       # Reset/normalize
-|   |– _variables.scss   # varialbes
+|   |– _functions.scss   # Sass Functions
+|   |– _mixins.scss      # Sass Mixins
+|   |– _variables.scss   # Sass Variables
+|
+|– base/
+|   |– _base.scss        # Reset/normalize
 |   |– _typography.scss  # Typography rules
-|   |– _animations.scss   # animations
+|   |– _animations.scss  # animations
 |   ...                  # Etc…
 |
 |– components/
@@ -62,10 +66,6 @@ sass/
 |   |– _home.scss        # Home specific styles
 |   |– _contact.scss     # Contact specific styles
 |   ...                  # Etc…
-|– utils/
-|   |– _functions.scss   # Sass Functions
-|   |– _mixins.scss      # Sass Mixins
-|   |– _helpers.scss     # Class & placeholders helpers
 |
 |– vendors/
 |   |– _bootstrap.scss   # Bootstrap

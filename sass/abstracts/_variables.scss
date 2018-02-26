@@ -1,0 +1,45 @@
+/**
+TODO:
+$color-black-dark
+$color-black
+$color-black-light
+
+$color-blue-dark
+$color-blue
+$color-blue-light
+
+$color-red-dark
+$color-red
+$color-red-light
+
+$color-green-dark
+$color-green
+$color-green-light
+
+$color-yellow-dark
+$color-yellow
+$color-yellow-light
+
+$color-grey-dark
+$color-grey
+$color-grey-light
+
+no primary/secondary colors,
+other than this, based on the color to lighten/darken how much percentage.
+**/
+
+$color-primary-black: #233142;
+$color-primary-black-light: #2E3E54;
+$color-primary-black-lighter: #3F5068;
+
+
+$color-primary-blue: #00C3EB;
+$color-primary-blue-light: #2ECDEE;
+$color-primary-blue-lighter: #5CD8F2;
+
+$color-primary-red: #F95959;
+$color-primary-red-light: #FA7777;
+$color-primary-red-lighter: #FB9595;
+
+$color-secondary-green: #14C888;
+$color-secondary-light: #15DB95;
