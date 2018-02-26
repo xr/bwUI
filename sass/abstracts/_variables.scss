@@ -43,3 +43,26 @@ $color-primary-red-lighter: #FB9595;
 
 $color-secondary-green: #14C888;
 $color-secondary-light: #15DB95;
+
+
+
+// Breakpoints
+/*
+	< 600px phone xs
+    600px - 1200px tablet sm
+    1200px - 1800px desktop md
+    1800px - 2800px desktop lg
+
+    1em = 16px;
+*/
+$break-xs: 37.5em;
+$break-sm: 75em;
+$break-md: 112.5em;
+$break-lg: 175em;
+
+$gl-mq-list: (
+    lg: $break-lg,
+    md: $break-md,
+    sm: $break-sm,
+    xs: $break-xs
+);
