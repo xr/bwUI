@@ -1,0 +1,7 @@
+[class^="icon-"] {
+    @each $color-name, $color-value in $colors {
+        &.#{$color-name} {
+            color: $color-value;
+        }
+    }
+}

@@ -7,12 +7,11 @@
     "watch:sass": "./node_modules/.bin/node-sass sass/main.scss css/style.css -w",
     "devserver": "./node_modules/.bin/live-server",
     "start": "./node_modules/.bin/npm-run-all --parallel devserver watch:sass",
-    "build": "./node_modules/.bin/npm-run-all compile:sass concat:css prefix:css compress:css",
-    
-    "compile:sass": "node-sass sass/main.scss css/style.comp.css",
-    "concat:css": "concat -o css/style.concat.css css/icon-fonts.css css/style.comp.css",
-    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.concat.css -o css/style.prefix.css",
-    "compress:css": "./node_modules/.bin/node-sass css/style.prefix.css css/style.css --output-style compressed"
+    "build": "./node_modules/.bin/npm-run-all compile prefix compress clean",
+    "compile": "node-sass sass/main.scss css/style.comp.css",
+    "prefix": "postcss --use autoprefixer -b 'last 10 versions' css/style.comp.css -o css/style.prefix.css",
+    "compress": "./node_modules/.bin/node-sass css/style.prefix.css css/style.css --output-style compressed",
+    "clean": "./node_modules/.bin/del-cli css/style.*.css"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +19,7 @@
   "devDependencies": {
     "autoprefixer": "^8.0.0",
     "concat": "^1.0.3",
+    "del-cli": "^1.1.0",
     "live-server": "^1.2.0",
     "node-sass": "^4.7.2",
     "npm-run-all": "^4.1.2",
