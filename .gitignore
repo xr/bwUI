@@ -2,3 +2,5 @@ node_modules
 css/style.comp.css
 css/style.concat.css
 css/style.prefix.css
+npm-debug.log
+css/style.css
