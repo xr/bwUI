@@ -4,9 +4,10 @@
 
 @import "base/base";
 @import "base/typography";
+@import "base/icons";
 
 @import "vendors/grid/gridlex";
 
 body {
-    background-color: rgba($color-primary-black, .5);
+    background-color: color(gold, light);
 }

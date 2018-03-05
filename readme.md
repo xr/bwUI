@@ -106,9 +106,9 @@ sass/
 
 - [x] Archetecture
 - [x] Guidelines
-- [ ] Grid system
-- [ ] Icon system
-- [ ] Color palette
+- [x] Grid system (http://gridlex.devlint.fr/)
+- [x] Icon system
+- [x] Color palette
 - [ ] Typography
 - [ ] Card
 - [ ] Alert
@@ -117,6 +117,11 @@ sass/
 - [ ] Utility
 - [ ] Animations
 
+
+### Development guides
+
+#### Use Colors
+	Please always use `color($color-name, $color-variations)` to get the correct color, available colors and variations are available at `/abstracts/_abstracts.scss`.
 
 ### Designs
 

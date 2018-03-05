@@ -1,32 +1,3 @@
-/**
-TODO:
-$color-black-dark
-$color-black
-$color-black-light
-
-$color-blue-dark
-$color-blue
-$color-blue-light
-
-$color-red-dark
-$color-red
-$color-red-light
-
-$color-green-dark
-$color-green
-$color-green-light
-
-$color-yellow-dark
-$color-yellow
-$color-yellow-light
-
-$color-grey-dark
-$color-grey
-$color-grey-light
-
-no primary/secondary colors,
-other than this, based on the color to lighten/darken how much percentage.
-**/
 /*
 	< 600px phone xs
     600px - 1200px tablet sm
@@ -48,20 +19,6 @@ html {
 body {
   box-sizing: border-box; }
 
-/*
-TODO:
-Q1: Light, Regular, Medium, Bold, Black all needs?
-    how about the italic style?
-    only used as header or paragraphy as well?
-
-Q2: Open sans regular, bold only, italic?
-
-Q3: Do we need 7 level header? max 3 level?
-
-Q4: Metadata can be categorized into paragraph
-
-Q5: Paragraph, links can also be decided.
-*/
 /* ==========================================================================
     GRIDLEX
     Just a Flexbox Grid System - v. 2.7.0
@@ -1377,4 +1334,4 @@ Q5: Paragraph, links can also be decided.
     display: none; } }
 
 body {
-  background-color: rgba(35, 49, 66, 0.5); }
+  background-color: #fddf99; }

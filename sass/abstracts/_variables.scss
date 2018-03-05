@@ -1,50 +1,34 @@
-/**
-TODO:
-$color-black-dark
-$color-black
-$color-black-light
+$colors: (
+        navy: #233142,
+        blue: #00C3EB,
+        red: #F95959,
+        green: #15DB95,
+        gold: #FCC74E,
+        grey: #9BA1A9,
+        lightGrey: #F5F8F9
+);
 
-$color-blue-dark
-$color-blue
-$color-blue-light
-
-$color-red-dark
-$color-red
-$color-red-light
-
-$color-green-dark
-$color-green
-$color-green-light
-
-$color-yellow-dark
-$color-yellow
-$color-yellow-light
-
-$color-grey-dark
-$color-grey
-$color-grey-light
-
-no primary/secondary colors,
-other than this, based on the color to lighten/darken how much percentage.
-**/
-
-$color-primary-black: #233142;
-$color-primary-black-light: #2E3E54;
-$color-primary-black-lighter: #3F5068;
-
-
-$color-primary-blue: #00C3EB;
-$color-primary-blue-light: #2ECDEE;
-$color-primary-blue-lighter: #5CD8F2;
-
-$color-primary-red: #F95959;
-$color-primary-red-light: #FA7777;
-$color-primary-red-lighter: #FB9595;
-
-$color-secondary-green: #14C888;
-$color-secondary-light: #15DB95;
-
-
+$variations: (
+    light: (
+        function: lighten,
+        parameters: 15%
+    ),
+    dark: (
+        function: darken,
+        parameters: 15%
+    ),
+    fade: (
+        function: rgba,
+        parameters: .7
+    ),
+    gray: (
+        function: grayscale
+    ),
+    shade: (
+        function: mix,
+        parameters: white 80%
+    )
+);
 
 // Breakpoints
 /*
@@ -60,6 +44,7 @@ $break-sm: 75em;
 $break-md: 112.5em;
 $break-lg: 175em;
 
+// overwrite the default grid vendors
 $gl-mq-list: (
     lg: $break-lg,
     md: $break-md,
