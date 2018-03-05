@@ -74,19 +74,20 @@ sass/
 `– main.scss             # Main Sass file
 ```
 
-### CSS guidelines
+## CSS guidelines
 	[Airbnb](https://github.com/airbnb/css)
 
-### naming convention
+## naming convention
 	[BEM — Block Element Modifier](http://getbem.com/)
 
-### desktop first adaptive design
+## desktop first adaptive design
 	- start writing css for desktop: large screen
     - then shrink design to smaller screen
         @media(max-width: 600px)
     - max-width media queries
 
-#### Breakpoints
+## Breakpoints
+	
 	Based on the data [here](http://gs.statcounter.com/screen-resolution-stats) as well as our own data, we would go with the following breakpoints.
 
 	```
@@ -97,20 +98,20 @@ sass/
     1800px - big desktop
 	```
 
-### Development guides
+## Development guides
 
-#### DRY
+### DRY
 	
    - use mixins, functions or create helper for general problems (Ref: `abstracts/_minxins.scss`)
 
-#### Use Colors properly
+### Use Colors properly
 
  - Please always use `color($color-name, $color-variations)` to get the correct color, available colors and variations are available at `abstracts/_abstracts.scss`.
  - use `colorfy($property-name)` to support color variations for different elements, such as: `class="bg navy-light"`, Ref: `base/_utilities.scss`.
 
 
 
-### Project status checklist
+## Project status checklist
 
 > "marked" means both design and implementation are done.
 
@@ -128,6 +129,6 @@ sass/
 - [ ] Animations
 
 
-### Designs
+## Designs
 
 ![#1](designs/ui-1.png)
