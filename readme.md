@@ -87,8 +87,8 @@ sass/
     - max-width media queries
 
 ## Breakpoints
-	
-	Based on the data [here](http://gs.statcounter.com/screen-resolution-stats) as well as our own data, we would go with the following breakpoints.
+
+Based on the data [here](http://gs.statcounter.com/screen-resolution-stats) as well as our own data, we would go with the following breakpoints.
 
 	```
 	< 600px phone
