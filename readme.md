@@ -121,7 +121,8 @@ sass/
 ### Development guides
 
 #### Use Colors
-	Please always use `color($color-name, $color-variations)` to get the correct color, available colors and variations are available at `/abstracts/_abstracts.scss`.
+
+Please always use `color($color-name, $color-variations)` to get the correct color, available colors and variations are available at `/abstracts/_abstracts.scss`.
 
 ### Designs
 
