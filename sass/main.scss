@@ -5,10 +5,7 @@
 @import "base/base";
 @import "base/typography";
 @import "base/icons";
+@import "base/utilities";
 
 @import "vendors/grid/gridlex";
 @import "vendors/fonts/icon-fonts";
-
-body {
-    background-color: color(gold, light);
-}

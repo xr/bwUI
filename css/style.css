@@ -19,26 +19,222 @@ html {
 body {
   box-sizing: border-box; }
 
-[class^="icon-"].navy {
-  color: #233142; }
+[class^="icon-"] {
+  font-size: 2rem; }
+  [class^="icon-"].navy {
+    color: #233142; }
+  [class^="icon-"].navy-light {
+    color: #3e5674; }
+  [class^="icon-"].navy-dark {
+    color: #080c10; }
+  [class^="icon-"].navy-fade {
+    color: rgba(35, 49, 66, 0.7); }
+  [class^="icon-"].navy-gray {
+    color: #333333; }
+  [class^="icon-"].navy-shade {
+    color: #4f5a68; }
+  [class^="icon-"].blue {
+    color: #00C3EB; }
+  [class^="icon-"].blue-light {
+    color: #39ddff; }
+  [class^="icon-"].blue-dark {
+    color: #00849f; }
+  [class^="icon-"].blue-fade {
+    color: rgba(0, 195, 235, 0.7); }
+  [class^="icon-"].blue-gray {
+    color: #767676; }
+  [class^="icon-"].blue-shade {
+    color: #33cfef; }
+  [class^="icon-"].red {
+    color: #F95959; }
+  [class^="icon-"].red-light {
+    color: #fca3a3; }
+  [class^="icon-"].red-dark {
+    color: #f60f0f; }
+  [class^="icon-"].red-fade {
+    color: rgba(249, 89, 89, 0.7); }
+  [class^="icon-"].red-gray {
+    color: darkgray; }
+  [class^="icon-"].red-shade {
+    color: #fa7a7a; }
+  [class^="icon-"].green {
+    color: #15DB95; }
+  [class^="icon-"].green-light {
+    color: #4eeeb6; }
+  [class^="icon-"].green-dark {
+    color: #0e9566; }
+  [class^="icon-"].green-fade {
+    color: rgba(21, 219, 149, 0.7); }
+  [class^="icon-"].green-gray {
+    color: #787878; }
+  [class^="icon-"].green-shade {
+    color: #44e2aa; }
+  [class^="icon-"].gold {
+    color: #FCC74E; }
+  [class^="icon-"].gold-light {
+    color: #fddf99; }
+  [class^="icon-"].gold-dark {
+    color: #f9af04; }
+  [class^="icon-"].gold-fade {
+    color: rgba(252, 199, 78, 0.7); }
+  [class^="icon-"].gold-gray {
+    color: #a5a5a5; }
+  [class^="icon-"].gold-shade {
+    color: #fdd271; }
+  [class^="icon-"].grey {
+    color: #9BA1A9; }
+  [class^="icon-"].grey-light {
+    color: #c4c8cc; }
+  [class^="icon-"].grey-dark {
+    color: #727a85; }
+  [class^="icon-"].grey-fade {
+    color: rgba(155, 161, 169, 0.7); }
+  [class^="icon-"].grey-gray {
+    color: #a2a2a2; }
+  [class^="icon-"].grey-shade {
+    color: #afb4ba; }
+  [class^="icon-"].lightGrey {
+    color: #F5F8F9; }
+  [class^="icon-"].lightGrey-light {
+    color: white; }
+  [class^="icon-"].lightGrey-dark {
+    color: #c5d7dc; }
+  [class^="icon-"].lightGrey-fade {
+    color: rgba(245, 248, 249, 0.7); }
+  [class^="icon-"].lightGrey-gray {
+    color: #f7f7f7; }
+  [class^="icon-"].lightGrey-shade {
+    color: #f7f9fa; }
+  [class^="icon-"].sm {
+    font-size: 1rem; }
+  [class^="icon-"].lg {
+    font-size: 4rem; }
 
-[class^="icon-"].blue {
-  color: #00C3EB; }
+.bg.navy {
+  background-color: #233142; }
 
-[class^="icon-"].red {
-  color: #F95959; }
+.bg.navy-light {
+  background-color: #3e5674; }
 
-[class^="icon-"].green {
-  color: #15DB95; }
+.bg.navy-dark {
+  background-color: #080c10; }
 
-[class^="icon-"].gold {
-  color: #FCC74E; }
+.bg.navy-fade {
+  background-color: rgba(35, 49, 66, 0.7); }
 
-[class^="icon-"].grey {
-  color: #9BA1A9; }
+.bg.navy-gray {
+  background-color: #333333; }
 
-[class^="icon-"].lightGrey {
-  color: #F5F8F9; }
+.bg.navy-shade {
+  background-color: #4f5a68; }
+
+.bg.blue {
+  background-color: #00C3EB; }
+
+.bg.blue-light {
+  background-color: #39ddff; }
+
+.bg.blue-dark {
+  background-color: #00849f; }
+
+.bg.blue-fade {
+  background-color: rgba(0, 195, 235, 0.7); }
+
+.bg.blue-gray {
+  background-color: #767676; }
+
+.bg.blue-shade {
+  background-color: #33cfef; }
+
+.bg.red {
+  background-color: #F95959; }
+
+.bg.red-light {
+  background-color: #fca3a3; }
+
+.bg.red-dark {
+  background-color: #f60f0f; }
+
+.bg.red-fade {
+  background-color: rgba(249, 89, 89, 0.7); }
+
+.bg.red-gray {
+  background-color: darkgray; }
+
+.bg.red-shade {
+  background-color: #fa7a7a; }
+
+.bg.green {
+  background-color: #15DB95; }
+
+.bg.green-light {
+  background-color: #4eeeb6; }
+
+.bg.green-dark {
+  background-color: #0e9566; }
+
+.bg.green-fade {
+  background-color: rgba(21, 219, 149, 0.7); }
+
+.bg.green-gray {
+  background-color: #787878; }
+
+.bg.green-shade {
+  background-color: #44e2aa; }
+
+.bg.gold {
+  background-color: #FCC74E; }
+
+.bg.gold-light {
+  background-color: #fddf99; }
+
+.bg.gold-dark {
+  background-color: #f9af04; }
+
+.bg.gold-fade {
+  background-color: rgba(252, 199, 78, 0.7); }
+
+.bg.gold-gray {
+  background-color: #a5a5a5; }
+
+.bg.gold-shade {
+  background-color: #fdd271; }
+
+.bg.grey {
+  background-color: #9BA1A9; }
+
+.bg.grey-light {
+  background-color: #c4c8cc; }
+
+.bg.grey-dark {
+  background-color: #727a85; }
+
+.bg.grey-fade {
+  background-color: rgba(155, 161, 169, 0.7); }
+
+.bg.grey-gray {
+  background-color: #a2a2a2; }
+
+.bg.grey-shade {
+  background-color: #afb4ba; }
+
+.bg.lightGrey {
+  background-color: #F5F8F9; }
+
+.bg.lightGrey-light {
+  background-color: white; }
+
+.bg.lightGrey-dark {
+  background-color: #c5d7dc; }
+
+.bg.lightGrey-fade {
+  background-color: rgba(245, 248, 249, 0.7); }
+
+.bg.lightGrey-gray {
+  background-color: #f7f7f7; }
+
+.bg.lightGrey-shade {
+  background-color: #f7f9fa; }
 
 /* ==========================================================================
     GRIDLEX
@@ -1991,6 +2187,3 @@ body {
 
 .icon-zoom-out:before {
   content: "\e069"; }
-
-body {
-  background-color: #fddf99; }

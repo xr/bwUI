@@ -24,9 +24,7 @@ Build a modern UI library that cares about:
 		- uglify
 
 
-## Plan
-
-### Architecture (6-1 patterns which derived from 7-1 patterns)
+##  Architecture (6-1 patterns which derived from 7-1 patterns)
 
 - folder/file naming prefer plural
 - partial file start with _
@@ -99,6 +97,18 @@ sass/
     1800px - big desktop
 	```
 
+### Development guides
+
+#### DRY
+	
+   - use mixins, functions or create helper for general problems (Ref: `abstracts/_minxins.scss`)
+
+#### Use Colors properly
+
+ - Please always use `color($color-name, $color-variations)` to get the correct color, available colors and variations are available at `abstracts/_abstracts.scss`.
+ - use `colorfy($property-name)` to support color variations for different elements, such as: `class="bg navy-light"`, Ref: `base/_utilities.scss`.
+
+
 
 ### Project status checklist
 
@@ -117,12 +127,6 @@ sass/
 - [ ] Utility
 - [ ] Animations
 
-
-### Development guides
-
-#### Use Colors
-
-Please always use `color($color-name, $color-variations)` to get the correct color, available colors and variations are available at `/abstracts/_abstracts.scss`.
 
 ### Designs
 

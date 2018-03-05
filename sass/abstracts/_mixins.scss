@@ -12,3 +12,20 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+@mixin colorfy($property: 'color') {
+    @each $color-name, $color-value in $colors {
+        // set the primary & secondary color
+        &.#{$color-name} {
+            #{$property}: $color-value;
+        }
+
+        // set the variation colors
+        @each $variation-name, $variation-value in $variations {
+            @debug "&.#{$color-name}-#{$variation-name}";
+            &.#{$color-name}-#{$variation-name} {
+                #{$property}: color($color-name, $variation-name);
+            }
+        }
+    }
+}
