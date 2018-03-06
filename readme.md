@@ -74,7 +74,7 @@ sass/
 `– main.scss             # Main Sass file
 ```
 ## Demo
-	Please check the `index.html` page in the repo.
+	Please check the `index.html` page in the repo. (not responsive, please check via desktop)
 
 ## CSS guidelines
 	[Airbnb](https://github.com/airbnb/css)

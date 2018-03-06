@@ -60,3 +60,10 @@ h6 {
         }
     }
 }
+
+p {
+    @include colorfy();
+
+    font-size: 1.6rem;
+    line-height: 2.5rem;
+}
