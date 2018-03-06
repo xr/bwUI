@@ -43,4 +43,20 @@ h6 {
     &.black {
         font-weight: 900;
     }
+
+    &.sub {
+        font-size: 2.4rem;
+
+        &.sm {
+            font-size: 2rem;
+        }
+
+        &.md {
+            font-size: 2.4rem;
+        }
+
+        &.lg {
+            font-size: 3.2rem;
+        }
+    }
 }
