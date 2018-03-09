@@ -36,7 +36,7 @@ e.g.
 
         // set the variation colors
         @each $variation-name, $variation-value in $color-variations {
-            &.#{$color-name}--#{$variation-name} {
+            &.#{$color-name}.#{$variation-name} {
                 #{$property}: color($color-name, $variation-name);
             }
         }
