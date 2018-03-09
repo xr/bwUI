@@ -9,10 +9,10 @@
     }
   
     @if $variation {
-      @if not map-has-key($variations, $variation) {
+      @if not map-has-key($color-variations, $variation) {
         @error "Invalid $variation: `#{$variation}`.";
       } @else {
-        $this-variation: map-get($variations, $variation);
+        $this-variation: map-get($color-variations, $variation);
         $args: join(map-get($this-variation, function), $color);
         @if map-get($this-variation, parameters) {
           $args: join($args, map-get($this-variation, parameters));
@@ -21,4 +21,26 @@
       }
     }
     @return $color;
+}
+
+
+@function font-size($type, $variation: false) {
+
+  @if map-has-key($font-sizes, $type) {
+    $type: map-get($font-sizes, $type);
+  } @else {
+    @if type-of($type) != type {
+      @error "Invalid size type name: `#{$type}`.";
+    }
+  }
+
+  @if $variation {
+    @if not map-has-key($font-sizes-variations, $variation) {
+      @error "Invalid $variation: `#{$variation}`.";
+    } @else {
+      $variation-value: map-get($font-sizes-variations, $variation);
+      @return $type * $variation-value;
+    }
+  }
+  @return $type;
 }

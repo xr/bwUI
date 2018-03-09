@@ -5,10 +5,10 @@ $colors: (
         green: #15DB95,
         gold: #FCC74E,
         grey: #9BA1A9,
-        lightGrey: #F5F8F9
+        light-grey: #F5F8F9
 );
 
-$variations: (
+$color-variations: (
     light: (
         function: lighten,
         parameters: 15%
@@ -30,7 +30,20 @@ $variations: (
     )
 );
 
-// Breakpoints
+$font-sizes: (
+    header: 4.8rem,
+    sub-header: 2.4rem,
+    text: 1.6rem,
+    meta-text: 1.2rem
+);
+
+$font-sizes-variations: (
+    sm: 0.75,
+    md: 1,
+    lg: 1.25
+);
+
+//Breakpoints
 /*
 	< 600px phone xs
     600px - 1200px tablet sm

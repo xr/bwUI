@@ -13,7 +13,21 @@
     transform: translate(-50%, -50%);
 }
 
-@mixin colorfy($property: 'color') {
+/*
+This function can be hooked when class 'x' wants 'color' feature.
+e.g. 
+
+    .x {
+        @include color-activator();
+    }
+
+    then: <span class="x gold"></span> will have `color` property the gold color
+
+ params:
+    - $property: which CSS property needs to add colors (default: color)
+*/
+@mixin color-activator($property: 'color') {
+    // default option is to activate `color` property
     @each $color-name, $color-value in $colors {
         // set the primary & secondary color
         &.#{$color-name} {
@@ -21,11 +35,48 @@
         }
 
         // set the variation colors
-        @each $variation-name, $variation-value in $variations {
-            @debug "&.#{$color-name}-#{$variation-name}";
-            &.#{$color-name}-#{$variation-name} {
+        @each $variation-name, $variation-value in $color-variations {
+            &.#{$color-name}--#{$variation-name} {
                 #{$property}: color($color-name, $variation-name);
             }
+        }
+    }
+}
+
+/*
+This function can be attached to the elements or classes that want to have `.sizeName .variation` features.
+e.g. we can attach this function to:
+ 
+    span {
+        @include size-activator(header)
+    }
+    
+    then: <span class="header"></span> will have the same header feature
+
+    params:
+        - $name: what class name inside $font-sizes needs to active
+        - $property: which CSS property needs to be operate on (default: font-size)
+        - $sizes: what are the base sizes for specific properties (default: $font-sizes)
+        - $variations: what are the variations for the perperties and the values related to them (default: $font-sizes-variations)
+*/
+@mixin size-activator($name, $sizes: $font-sizes, $property: 'font-size', $variations: $font-sizes-variations) {
+    $value: map-get($sizes, $name);
+    // set the default size
+    /**
+        i.e.
+        &.header {
+            font-size: 4.8rem;
+        }
+    */
+    &.#{$name} {
+        #{$property}: $value;
+    }
+
+    // set the variation sizes
+    @each $variation-name, $variation-value in $variations {
+        &.#{$name}.#{$variation-name} {
+            $fn: get-function('font-size');
+            #{$property}: call(#{$property}, $name, $variation-name);
         }
     }
 }

@@ -80,7 +80,16 @@ sass/
 	[Airbnb](https://github.com/airbnb/css)
 
 ## naming convention
-	[BEM — Block Element Modifier](http://getbem.com/)
+- [BEM](http://getbem.com/) (`.block__element-name--modifier`)
+- no camelcase AT ALL!
+
+For example:
+
+	```
+	<div class="color-box bg grey--dark">grey--dark</div>
+	<div class="color-box bg light-grey--dark">light-grey--dark</div>
+	<input class="form__input--lg">
+	```
 
 ## desktop first adaptive design
 	- start writing css for desktop: large screen
@@ -129,6 +138,9 @@ Based on the data [here](http://gs.statcounter.com/screen-resolution-stats) as w
 - [ ] Form
 - [ ] Utility
 - [ ] Animations
+
+## TODO
+- color background activator
 
 
 ## Designs

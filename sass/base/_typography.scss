@@ -8,29 +8,27 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    @include colorfy();
+h1, h2, h3, h4, h5, h6 {
+    // will resolve as class="h1 header", etc.
+    @include size-activator(header);
+    @include size-activator(sub-header);
+    @include color-activator();
+}
 
+p, a {
+    @include size-activator(text);
+    @include size-activator(meta-text);
+    @include color-activator();
+}
+
+div, span {
+    @include size-activator(text);
+    @include size-activator(meta-text);
+}
+
+.header, .sub-header {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    font-size: 4.8rem;
-
-    &.sm {
-        font-size: 3.6rem;
-    }
-
-    &.md {
-        font-size: 4.8rem;
-    }
-
-    &.lg {
-        font-size: 6.4rem;
-    }
 
     &.italic {
         font-style: italic;
@@ -43,27 +41,25 @@ h6 {
     &.black {
         font-weight: 900;
     }
+}
 
-    &.sub {
-        font-size: 2.4rem;
+.text {
+    line-height: 140%;
 
-        &.sm {
-            font-size: 2rem;
-        }
+    &.italic {
+        font-style: italic;
+    }
 
-        &.md {
-            font-size: 2.4rem;
-        }
-
-        &.lg {
-            font-size: 3.2rem;
-        }
+    &.bold {
+        font-weight: 700;
     }
 }
 
-p {
-    @include colorfy();
+a {
+    text-decoration: none;
+    color: color(blue);
+}
 
-    font-size: 1.6rem;
-    line-height: 2.5rem;
+.meta-text {
+    color: color(gray);
 }
