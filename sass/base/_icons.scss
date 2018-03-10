@@ -1,17 +1,3 @@
 [class^="icon-"] {
-    @include color-activator();
-
-    font-size: 2rem;
-
-    &.sm {
-        font-size: 1rem;
-    }
-
-    &.md {
-        font-size: 2rem;
-    }
-
-    &.lg {
-        font-size: 4rem;
-    }
+    @include font-size-modifier(icon);
 }

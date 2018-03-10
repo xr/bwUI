@@ -1,3 +1,12 @@
+/// To clear the float elements.
+///
+/// @author liang@bonusway.com
+///
+///
+/// @example scss - clear fix after `.foo` element.
+///   .foo {
+///     @include clearfix();
+///   }
 @mixin clearfix {
     &::after {
         content: "";
@@ -6,6 +15,15 @@
     }
 }
 
+/// To let the element locate at the center of its parent (horizontally and vertically).
+///
+/// @author liang@bonusway.com
+///
+///
+/// @example scss - absolute center `.foo`.
+///   .foo {
+///     @include abs-center();
+///   }
 @mixin abs-center {
     position: absolute;
     top: 50%;
@@ -13,70 +31,55 @@
     transform: translate(-50%, -50%);
 }
 
-/*
-This function can be hooked when class 'x' wants 'color' feature.
-e.g. 
+/// This mixin is used to set `.text--red` or `.bg--red`. Use this one globally
+///
+/// @author liang@bonusway.com
+///
+/// @param {class-name} $class-name - class name that want to attach color features
+/// @param {property} $property - what css property that need to attach the colors
+///
+/// @example scss
+///   @include color-activator();
+///   @include color-activator('.bg', background-color);
 
-    .x {
-        @include color-activator();
-    }
-
-    then: <span class="x gold"></span> will have `color` property the gold color
-
- params:
-    - $property: which CSS property needs to add colors (default: color)
-*/
-@mixin color-activator($property: 'color') {
+@mixin color-activator($class-name: '.text', $property: 'color') {
     // default option is to activate `color` property
     @each $color-name, $color-value in $colors {
         // set the primary & secondary color
-        &.#{$color-name} {
+        #{$class-name}--#{$color-name} {
             #{$property}: $color-value;
         }
 
         // set the variation colors
         @each $variation-name, $variation-value in $color-variations {
-            &.#{$color-name}.#{$variation-name} {
+            #{$class-name}--#{$color-name}--#{$variation-name} {
                 #{$property}: color($color-name, $variation-name);
             }
         }
     }
 }
 
-/*
-This function can be attached to the elements or classes that want to have `.sizeName .variation` features.
-e.g. we can attach this function to:
- 
-    span {
-        @include size-activator(header)
-    }
-    
-    then: <span class="header"></span> will have the same header feature
+/// This mixin can be used to set the default font-size based on $font-sizes map
+/// and attach the font-size specific modifiers to elements or classes based on $font-sizes-variations map.
+///
+/// @author liang@bonusway.com
+///
+/// @param {name} $name - the property name from `$font-sizes` map.
+/// @example scss - set the default and modifiers to selector `.header`.
+///   .header {
+///     @include font-size-modifier(header);
+///   }
 
-    params:
-        - $name: what class name inside $font-sizes needs to active
-        - $property: which CSS property needs to be operate on (default: font-size)
-        - $sizes: what are the base sizes for specific properties (default: $font-sizes)
-        - $variations: what are the variations for the perperties and the values related to them (default: $font-sizes-variations)
-*/
-@mixin size-activator($name, $sizes: $font-sizes, $property: 'font-size', $variations: $font-sizes-variations) {
-    $value: map-get($sizes, $name);
-    // set the default size
-    /**
-        i.e.
-        &.header {
-            font-size: 4.8rem;
-        }
-    */
-    &.#{$name} {
-        #{$property}: $value;
+@mixin font-size-modifier($name) {
+    $base-size: map-get($font-sizes, $name);
+    & {
+        font-size: $base-size;
     }
 
-    // set the variation sizes
-    @each $variation-name, $variation-value in $variations {
-        &.#{$name}.#{$variation-name} {
+    @each $variation-name, $variation-value in $font-sizes-variations {
+        &.#{$name}--#{$variation-name} {
             $fn: get-function('font-size');
-            #{$property}: call(#{$property}, $name, $variation-name);
+            font-size: font-size($name, $variation-name);
         }
     }
 }

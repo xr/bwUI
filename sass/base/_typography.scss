@@ -8,24 +8,19 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    // will resolve as class="h1 header", etc.
-    @include size-activator(header);
-    @include size-activator(sub-header);
-    @include color-activator();
+@include color-activator();
+@include color-activator('.bg', background-color);
+
+
+// for optimazition purposes
+// please avoid to set font-size-modifier with multiple selectors
+.header {
+    @include font-size-modifier(header);
 }
 
-p, a {
-    @include size-activator(text);
-    @include size-activator(meta-text);
-    @include color-activator();
+.sub-header {
+    @include font-size-modifier(sub-header);
 }
-
-div, span {
-    @include size-activator(text);
-    @include size-activator(meta-text);
-}
-
 .header, .sub-header {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
@@ -44,6 +39,7 @@ div, span {
 }
 
 .text {
+    @include font-size-modifier(text);
     line-height: 140%;
 
     &.italic {
@@ -55,11 +51,12 @@ div, span {
     }
 }
 
+.meta-text {
+    @include font-size-modifier(meta-text);
+    color: color(gray);
+}
+
 a {
     text-decoration: none;
     color: color(blue);
-}
-
-.meta-text {
-    color: color(gray);
 }
