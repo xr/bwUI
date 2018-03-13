@@ -9,7 +9,7 @@ body {
 }
 
 @include color-activator();
-@include color-activator('.bg', background-color);
+@include color-activator('bg', background-color);
 
 
 // for optimazition purposes
@@ -52,8 +52,7 @@ body {
 }
 
 .text {
-    @include font-size-modifier(text);
-    line-height: 140%;
+    @include text-formatter();
 }
 
 .meta-text {

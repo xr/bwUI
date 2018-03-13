@@ -1,0 +1,31 @@
+.btn {
+    @include text-formatter();
+    border-radius: $border-radius;
+    min-width: btn-size(width);
+    height: btn-size(height);
+    padding: 0 $gap;
+    border: 0;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+
+    &.outline {
+        border-style: solid;
+        border-width: 1px;
+        @include color-activator('outline', border-color, 'true');
+    }
+
+    &:not(.disabled):hover {
+        @include class-darken();
+        @include color-activator('bg-on-hover', background-color, 'true');
+        @include color-activator('on-hover', color, 'true');
+    }
+
+    &:focus {
+        outline: 0;
+    }
+
+    &.disabled {
+        opacity: .7;
+        cursor: not-allowed;
+    }
+}

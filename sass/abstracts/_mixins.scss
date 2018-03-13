@@ -37,22 +37,37 @@
 ///
 /// @param {class-name} $class-name - class name that want to attach color features
 /// @param {property} $property - what css property that need to attach the colors
+/// @param {state} $state - if the color activator is stateful or not, e.g. hover or actived 
 ///
 /// @example scss
 ///   @include color-activator();
 ///   @include color-activator('.bg', background-color);
 
-@mixin color-activator($class-name: null, $property: 'color') {
+@mixin color-activator($class-name: null, $property: 'color', $state: null) {
     // default option is to activate `color` property
     @each $color-name, $color-value in $colors {
         // set the primary & secondary color
         @if $class-name != null {
-            #{$class-name}--#{$color-name} {
-                #{$property}: $color-value;
+
+            @if $state != null {
+                &.#{$class-name}--#{$color-name} {
+                    #{$property}: $color-value;
+                }
+            } @else {
+                .#{$class-name}--#{$color-name} {
+                    #{$property}: $color-value;
+                }
             }
+
         } @else  {
-            .#{$color-name} {
-                #{$property}: $color-value;
+            @if $state != null {
+                &.#{$color-name} {
+                    #{$property}: $color-value;
+                }
+            } @else {
+                .#{$color-name} {
+                    #{$property}: $color-value;
+                }
             }
         }
 
@@ -60,12 +75,24 @@
         // set the variation colors
         @each $variation-name, $variation-value in $color-variations {
             @if $class-name != null {
-                #{$class-name}--#{$color-name}--#{$variation-name} {
-                    #{$property}: color($color-name, $variation-name);
+                @if $state != null {
+                    &.#{$class-name}--#{$color-name}--#{$variation-name} {
+                        #{$property}: color($color-name, $variation-name);
+                    }
+                } @else {
+                    .#{$class-name}--#{$color-name}--#{$variation-name} {
+                        #{$property}: color($color-name, $variation-name);
+                    }
                 }
             } @else {
-                .#{$color-name}--#{$variation-name} {
-                    #{$property}: color($color-name, $variation-name);
+                @if $state != null {
+                    &.#{$color-name}--#{$variation-name} {
+                        #{$property}: color($color-name, $variation-name);
+                    }
+                } @else {
+                    .#{$color-name}--#{$variation-name} {
+                        #{$property}: color($color-name, $variation-name);
+                    }
                 }
             }
         }
@@ -90,9 +117,50 @@
     }
 
     @each $variation-name, $variation-value in $font-sizes-variations {
-        &.#{$variation-name} {
-            $fn: get-function('font-size');
+        &.#{$name}--#{$variation-name} {
             font-size: font-size($name, $variation-name);
+        }
+    }
+}
+
+/// This mixin can be used to set the default text style
+///
+/// @author liang@bonusway.com
+///
+/// @example scss - set the default and modifiers to selector `.header`.
+///   .button {
+///     @include text-formatter();
+///   }
+@mixin text-formatter() {
+    @include font-size-modifier(text);
+    line-height: 140%;
+}
+
+
+/// This mixin can be used to darken with specific prefix
+/// this can be useful when we want to modify the state of with the same class name. change state but keep the same class name.
+///
+/// @author liang@bonusway.com
+///
+/// @param {prefix} $prefix - in case we want to modify background, we have to specify prefix
+/// @param {property} $property - the css property we want to change
+/// @example scss - set the default and modifiers to selector `.header`.
+///   .button {
+///     &:hover {
+///         @include class-darken();
+///     }
+///   }
+@mixin class-darken($prefix: 'bg', $property: 'background-color') {
+    @each $color-name, $color-value in $colors {
+        // set the primary & secondary color
+        @if $prefix != null {
+            &.#{$prefix}--#{$color-name} {
+                #{$property}: color($color-name, dark);
+            }
+        } @else {
+            &.#{$color-name} {
+                #{$property}: color($color-name, dark);
+            }
         }
     }
 }

@@ -8,7 +8,8 @@ $colors: (
         green: #15DB95,
         gold: #FCC74E,
         grey: #9BA1A9,
-        light-grey: #F5F8F9
+        light-grey: #F5F8F9,
+        white: #FFFFFF
 );
 
 $color-variations: (
@@ -33,6 +34,9 @@ $color-variations: (
     )
 );
 
+$gap: 1rem;
+$border-radius: .5rem;
+
 $font-sizes: (
     header: 4.8rem,
     sub-header: 2.4rem,
@@ -47,7 +51,26 @@ $font-sizes-variations: (
     lg: 1.25
 );
 
-$gap: 1rem;
+$button-sizes: (
+    width: 15rem,
+    height: 5rem
+);
+
+$button-sizes-variations: (
+    sm: (
+        width: 0.87,
+        height: 0.7
+    ),
+    md: (
+        width: 1,
+        height: 1
+    ),
+    lg: (
+        width: 2,
+        height: 1
+    )
+);
+
 
 //Breakpoints
 /*

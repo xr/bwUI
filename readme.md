@@ -97,6 +97,11 @@ For example:
         @media(max-width: 600px)
     - max-width media queries
 
+
+## Buttons
+
+	To use buttons, you need to specify background color AND text color e.g. 'class="btn white bg--blue"', this will enable the darken background feature. But if you want to customize the `on-hover` state, you can simply do: `on-hover-bg--red` to change the background or `on-hover--red` to change the text.
+
 ## Breakpoints
 
 Based on the data [here](http://gs.statcounter.com/screen-resolution-stats) as well as our own data, we would go with the following breakpoints.

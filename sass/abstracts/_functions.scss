@@ -44,3 +44,19 @@
   }
   @return $type;
 }
+
+@function btn-size($property, $variation: md) {
+
+  $size: map-get($button-sizes, $property);
+  
+  @if $variation {
+    @if not map-has-key($button-sizes-variations, $variation) {
+      @error "Invalid $variation: `#{$variation}`.";
+    } @else {
+      $variation-value: map-get($button-sizes-variations, $variation);
+      @return $size * map-get($variation-value, $property);
+    }
+  }
+
+  @return $size;
+}
