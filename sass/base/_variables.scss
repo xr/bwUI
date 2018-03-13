@@ -1,0 +1,25 @@
+//Breakpoints
+/*
+	< 600px phone xs
+    600px - 1200px tablet sm
+    1200px - 1800px desktop md
+    1800px - 2800px desktop lg
+
+    1em = 16px;
+*/
+$break-xs: 37.5em;
+$break-sm: 75em;
+$break-md: 112.5em;
+$break-lg: 175em;
+
+// overwrite the default grid vendors
+$gl-mq-list: (
+    lg: $break-lg,
+    md: $break-md,
+    sm: $break-sm,
+    xs: $break-xs
+);
+
+
+$gap: 1rem;
+$border-radius: .5rem;

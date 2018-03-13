@@ -1,34 +1,26 @@
-/// To clear the float elements.
-///
-/// @author liang@bonusway.com
-///
-///
-/// @example scss - clear fix after `.foo` element.
-///   .foo {
-///     @include clearfix();
-///   }
-@mixin clearfix {
-    &::after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-}
+@function color($color, $variation: false) {
 
-/// To let the element locate at the center of its parent (horizontally and vertically).
-///
-/// @author liang@bonusway.com
-///
-///
-/// @example scss - absolute center `.foo`.
-///   .foo {
-///     @include abs-center();
-///   }
-@mixin abs-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @if map-has-key($colors, $color) {
+      $color: map-get($colors, $color);
+    } @else {
+      @if type-of($color) != color {
+        @error "Invalid color name: `#{$color}`.";
+      }
+    }
+  
+    @if $variation {
+      @if not map-has-key($color-variations, $variation) {
+        @error "Invalid $variation: `#{$variation}`.";
+      } @else {
+        $this-variation: map-get($color-variations, $variation);
+        $args: join(map-get($this-variation, function), $color);
+        @if map-get($this-variation, parameters) {
+          $args: join($args, map-get($this-variation, parameters));
+        }
+        @return call($args...);
+      }
+    }
+    @return $color;
 }
 
 /// This mixin is used to set `.text--red` or `.bg--red`. Use this one globally
@@ -97,43 +89,6 @@
             }
         }
     }
-}
-
-/// This mixin can be used to set the default font-size based on $font-sizes map
-/// and attach the font-size specific modifiers to elements or classes based on $font-sizes-variations map.
-///
-/// @author liang@bonusway.com
-///
-/// @param {name} $name - the property name from `$font-sizes` map.
-/// @example scss - set the default and modifiers to selector `.header`.
-///   .header {
-///     @include font-size-modifier(header);
-///   }
-
-@mixin font-size-modifier($name) {
-    $base-size: map-get($font-sizes, $name);
-    & {
-        font-size: $base-size;
-    }
-
-    @each $variation-name, $variation-value in $font-sizes-variations {
-        &.#{$name}--#{$variation-name} {
-            font-size: font-size($name, $variation-name);
-        }
-    }
-}
-
-/// This mixin can be used to set the default text style
-///
-/// @author liang@bonusway.com
-///
-/// @example scss - set the default and modifiers to selector `.header`.
-///   .button {
-///     @include text-formatter();
-///   }
-@mixin text-formatter() {
-    @include font-size-modifier(text);
-    line-height: 140%;
 }
 
 

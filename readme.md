@@ -24,7 +24,7 @@ Build a modern UI library that cares about:
 		- uglify
 
 
-##  Architecture (6-1 patterns which derived from 7-1 patterns)
+##  Architecture 
 
 - folder/file naming prefer plural
 - partial file start with _
@@ -33,51 +33,39 @@ Build a modern UI library that cares about:
 ```
 sass/
 |
-|– abstracts/
-|   |– _functions.scss   # Sass Functions
-|   |– _mixins.scss      # Sass Mixins
-|   |– _variables.scss   # Sass Variables
-|
 |– base/
-|   |– _base.scss        # Reset/normalize
-|   |– _typography.scss  # Typography rules
-|   |– _animations.scss  # animations
-|   ...                  # Etc…
+|   |– _variables.scss   # Independent variables
+|   |– _helpers.scss     # Independent Functions & Mixins
+|   |– _index.scss       # Main scss rules
 |
-|– components/
-|   |– _button.scss     # Buttons
-|   |– _carousel.scss    # Carousel
-|   |– _cover.scss       # Cover
-|   |– _dropdown.scss    # Dropdown
-|   ...                  # Etc…
+|– atoms/
+|   |– colors
+|   |– typography
+|   |– icons
+|   |– buttons
+|   ...                  # TODO
 |
-|– layouts/
-|   |– _navigation.scss  # Navigation
-|   |– _grid.scss        # Grid system
-|   |– _header.scss      # Header
-|   |– _footer.scss      # Footer
-|   |– _sidebar.scss     # Sidebar
-|   |– _forms.scss       # Forms
-|   ...                  # Etc…
+|– molecules/
+|   ...                  # TODO
 |
-|– pages/
-|   |– _home.scss        # Home specific styles
-|   |– _contact.scss     # Contact specific styles
-|   ...                  # Etc…
+|– organisms/
+|   ...                  # TODO…
 |
 |– vendors/
-|   |– _bootstrap.scss   # Bootstrap
-|   |– _jquery-ui.scss   # jQuery UI
-|   ...                  # Etc…
+|   |– fonts
+|   |– grid
 |
 |
-`– main.scss             # Main Sass file
+`– main.scss             # Main sass entry file
 ```
+
 ## Demo
-	Please check the `index.html` page in the repo. (not responsive, please check via desktop)
+
+Please check the `index.html` page in the repo. (not responsive, please check via desktop)
 
 ## CSS guidelines
-	[Airbnb](https://github.com/airbnb/css)
+
+[Airbnb](https://github.com/airbnb/css)
 
 ## naming convention
 - [BEM](http://getbem.com/) (`.block__element-name--modifier`)
@@ -92,15 +80,16 @@ For example:
 	```
 
 ## desktop first adaptive design
-	- start writing css for desktop: large screen
-    - then shrink design to smaller screen
-        @media(max-width: 600px)
-    - max-width media queries
+
+- start writing css for desktop: large screen
+- then shrink design to smaller screen
+	@media(max-width: 600px)
+- max-width media queries
 
 
 ## Buttons
 
-	To use buttons, you need to specify background color AND text color e.g. 'class="btn white bg--blue"', this will enable the darken background feature. But if you want to customize the `on-hover` state, you can simply do: `on-hover-bg--red` to change the background or `on-hover--red` to change the text.
+To use buttons, you need to specify background color AND text color e.g. 'class="btn white bg--blue"', this will enable the darken background feature. But if you want to customize the `on-hover` state, you can simply do: `on-hover-bg--red` to change the background or `on-hover--red` to change the text.
 
 ## Breakpoints
 
@@ -118,7 +107,7 @@ Based on the data [here](http://gs.statcounter.com/screen-resolution-stats) as w
 
 ### DRY
 	
-   - use mixins, functions or create helper for general problems (Ref: `abstracts/_minxins.scss`)
+- use mixins, functions or create helper for general problems (Ref: `abstracts/_minxins.scss`)
 
 ### Use Colors properly
 

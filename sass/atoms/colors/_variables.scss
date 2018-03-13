@@ -1,0 +1,35 @@
+//// Define the color palettes
+/// @group variables
+////
+$colors: (
+        navy: #233142,
+        blue: #00C3EB,
+        red: #F95959,
+        green: #15DB95,
+        gold: #FCC74E,
+        grey: #9BA1A9,
+        light-grey: #F5F8F9,
+        white: #FFFFFF
+);
+
+$color-variations: (
+    light: (
+        function: lighten,
+        parameters: 15%
+    ),
+    dark: (
+        function: darken,
+        parameters: 15%
+    ),
+    fade: (
+        function: rgba,
+        parameters: .7
+    ),
+    gray: (
+        function: grayscale
+    ),
+    shade: (
+        function: mix,
+        parameters: white 80%
+    )
+);

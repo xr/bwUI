@@ -1,0 +1,56 @@
+@function font-size($type, $variation: false) {
+    @if map-has-key($font-sizes, $type) {
+      $type: map-get($font-sizes, $type);
+    } @else {
+      @if type-of($type) != type {
+        @error "Invalid size type name: `#{$type}`.";
+      }
+    }
+  
+    @if $variation {
+      @if not map-has-key($font-sizes-variations, $variation) {
+        @error "Invalid $variation: `#{$variation}`.";
+      } @else {
+        $variation-value: map-get($font-sizes-variations, $variation);
+        @return $type * $variation-value;
+      }
+    }
+    @return $type;
+}
+
+/// This mixin can be used to set the default font-size based on $font-sizes map
+/// and attach the font-size specific modifiers to elements or classes based on $font-sizes-variations map.
+///
+/// @author liang@bonusway.com
+///
+/// @param {name} $name - the property name from `$font-sizes` map.
+/// @example scss - set the default and modifiers to selector `.header`.
+///   .header {
+///     @include font-size-modifier(header);
+///   }
+
+@mixin font-size-modifier($name) {
+  $base-size: map-get($font-sizes, $name);
+  & {
+      font-size: $base-size;
+  }
+
+  @each $variation-name, $variation-value in $font-sizes-variations {
+      &.#{$name}--#{$variation-name} {
+          font-size: font-size($name, $variation-name);
+      }
+  }
+}
+
+/// This mixin can be used to set the default text style
+///
+/// @author liang@bonusway.com
+///
+/// @example scss - set the default and modifiers to selector `.header`.
+///   .button {
+///     @include text-formatter();
+///   }
+@mixin text-formatter() {
+  @include font-size-modifier(text);
+  line-height: 140%;
+}

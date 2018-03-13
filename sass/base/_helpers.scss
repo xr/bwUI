@@ -1,0 +1,32 @@
+/// To clear the float elements.
+///
+/// @author liang@bonusway.com
+///
+///
+/// @example scss - clear fix after `.foo` element.
+///   .foo {
+///     @include clearfix();
+///   }
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+/// To let the element locate at the center of its parent (horizontally and vertically).
+///
+/// @author liang@bonusway.com
+///
+///
+/// @example scss - absolute center `.foo`.
+///   .foo {
+///     @include abs-center();
+///   }
+@mixin abs-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

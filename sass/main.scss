@@ -1,14 +1,11 @@
-@import "abstracts/_functions";
-@import "abstracts/_mixins";
-@import "abstracts/_variables";
+@import "base/index";
 
-@import "base/base";
-@import "base/typography";
-@import "base/icons";
-@import "base/utilities";
+@import "atoms/colors/index";
+@import "atoms/typography/index";
+@import "atoms/icons/index";
+@import "atoms/buttons/index";
+@import "atoms/quotes/index";
 
-@import "components/quote";
-@import "components/buttons";
 
 @import "vendors/grid/gridlex";
 @import "vendors/fonts/icon-fonts";

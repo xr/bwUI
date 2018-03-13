@@ -1,0 +1,19 @@
+$button-sizes: (
+    width: 15rem,
+    height: 5rem
+);
+
+$button-sizes-variations: (
+    sm: (
+        width: 0.87,
+        height: 0.7
+    ),
+    md: (
+        width: 1,
+        height: 1
+    ),
+    lg: (
+        width: 2,
+        height: 1
+    )
+);
