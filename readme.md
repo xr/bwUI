@@ -119,6 +119,7 @@ Based on the data [here](http://gs.statcounter.com/screen-resolution-stats) as w
 
  - Please always use `color($color-name, $color-variations)` to get the correct color, available colors and variations are available at `abstracts/_abstracts.scss`.
  - use `colorfy($property-name)` to support color variations for different elements, such as: `class="bg navy-light"`, Ref: `base/_utilities.scss`.
+ - color name in class without prefix refers to change `color` property, others, specify `.bg--navy`.
 
 
 
