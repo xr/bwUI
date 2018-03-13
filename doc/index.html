@@ -18,14 +18,27 @@
     // default option is to activate `color` property
     @each $color-name, $color-value in $colors {
         // set the primary &amp; secondary color
-        #{$class-name}--#{$color-name} {
-            #{$property}: $color-value;
+        @if $class-name != null {
+            #{$class-name}--#{$color-name} {
+                #{$property}: $color-value;
+            }
+        } @else  {
+            .#{$color-name} {
+                #{$property}: $color-value;
+            }
         }
+
 
         // set the variation colors
         @each $variation-name, $variation-value in $color-variations {
-            #{$class-name}--#{$color-name}--#{$variation-name} {
-                #{$property}: color($color-name, $variation-name);
+            @if $class-name != null {
+                #{$class-name}--#{$color-name}--#{$variation-name} {
+                    #{$property}: color($color-name, $variation-name);
+                }
+            } @else {
+                .#{$color-name}--#{$variation-name} {
+                    #{$property}: color($color-name, $variation-name);
+                }
             }
         }
     }
@@ -37,7 +50,7 @@
     }
 
     @each $variation-name, $variation-value in $font-sizes-variations {
-        &amp;.#{$name}--#{$variation-name} {
+        &amp;.#{$variation-name} {
             $fn: get-function(&#39;font-size&#39;);
             font-size: font-size($name, $variation-name);
         }

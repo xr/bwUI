@@ -11,7 +11,8 @@
     "compile": "node-sass sass/main.scss css/style.comp.css",
     "prefix": "postcss --use autoprefixer -b 'last 10 versions' css/style.comp.css -o css/style.prefix.css",
     "compress": "./node_modules/.bin/node-sass css/style.prefix.css css/style.css --output-style compressed",
-    "clean": "./node_modules/.bin/del-cli css/style.*.css"
+    "clean": "./node_modules/.bin/del-cli css/style.*.css",
+    "doc": "./node_modules/.bin/sassdoc ./sass/ -d doc/"
   },
   "author": "",
   "license": "ISC",

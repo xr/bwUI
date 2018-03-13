@@ -30,6 +30,14 @@ body {
     font-style: italic;
 }
 
+.uppercase {
+    text-transform: uppercase;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
 .header, .sub-header {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
