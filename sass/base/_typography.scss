@@ -6,7 +6,6 @@
 
 body {
     font-family: "Open Sans", sans-serif;
-    font-weight: 400;
 }
 
 @include color-activator();
@@ -24,16 +23,20 @@ body {
 }
 
 // generic font style variations
+.bold {
+    font-weight: 700;
+}
 .italic {
     font-style: italic;
 }
 
-.bold {
-    font-weight: 700;
-}
-
 .header, .sub-header {
     font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+
+    &.bold {
+        font-weight: 700;
+    }
 
     &.black {
         font-weight: 900;
