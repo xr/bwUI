@@ -1,3 +1,8 @@
+/// This mixin can be used to get the button size
+///
+/// @author liang@bonusway.com
+///
+/// @param {property} $property - the property name from `$button-sizes` map.
 @function btn-size($property, $variation: md) {
 
     $size: map-get($button-sizes, $property);
@@ -12,4 +17,30 @@
     }
   
     @return $size;
+}
+
+/// This mixin can be used to set the default button size based on $button-sizes map
+/// and attach the font-size specific modifiers to elements or classes based on $button-sizes-variations map.
+///
+/// @author liang@bonusway.com
+///
+/// @example scss - set the default and modifiers to selector `.header`.
+///   .header {
+///     @include btn-size-modifier(width);
+///   }
+
+@mixin btn-size-modifier() {
+  $width-base-size: map-get($button-sizes, width);
+  $height-base-size: map-get($button-sizes, height);
+  & {
+    min-width: $width-base-size;
+    height: $height-base-size;
+  }
+
+  @each $variation-name, $variation-value in $button-sizes-variations {
+      &--#{$variation-name} {
+        min-width: btn-size(width, $variation-name);
+        height: btn-size(height, $variation-name);
+      }
+  }
 }

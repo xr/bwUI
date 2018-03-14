@@ -3,6 +3,7 @@
 
 .btn {
     @include text-formatter();
+    @include btn-size-modifier();
     border-radius: $border-radius;
     min-width: btn-size(width);
     height: btn-size(height);
@@ -10,17 +11,25 @@
     border: 0;
     text-transform: uppercase;
     letter-spacing: .1rem;
+    transition: all .3s;
 
     &.outline {
+        @include color-activator('outline', border-color, 'true');
         border-style: solid;
         border-width: 1px;
-        @include color-activator('outline', border-color, 'true');
     }
 
     &:not(.disabled):hover {
         @include class-darken();
         @include color-activator('bg-on-hover', background-color, 'true');
         @include color-activator('on-hover', color, 'true');
+
+        transform: translateY(-2px);
+        cursor: pointer;
+    }
+
+    &:not(.disabled):active {
+        transform: translateY(0px);
     }
 
     &:focus {
@@ -30,5 +39,9 @@
     &.disabled {
         opacity: .7;
         cursor: not-allowed;
+        &.outline {
+            border-color: color(grey);
+            color: color(grey);
+        }
     }
 }
