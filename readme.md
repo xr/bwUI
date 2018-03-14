@@ -86,6 +86,9 @@ For example:
 	@media(max-width: 600px)
 - max-width media queries
 
+## Grid System
+
+http://gridlex.devlint.fr
 
 ## Buttons
 
@@ -115,29 +118,3 @@ Based on the data [here](http://gs.statcounter.com/screen-resolution-stats) as w
  - use `colorfy($property-name)` to support color variations for different elements, such as: `class="bg navy-light"`, Ref: `base/_utilities.scss`.
  - color name in class without prefix refers to change `color` property, others, specify `.bg--navy`.
 
-
-
-## Project status checklist
-
-> "marked" means both design and implementation are done.
-
-- [x] Archetecture
-- [x] Guidelines
-- [x] Grid system (http://gridlex.devlint.fr/)
-- [x] Icon system
-- [x] Color palette
-- [ ] Typography
-- [ ] Card
-- [ ] Alert
-- [ ] Button
-- [ ] Form
-- [ ] Utility
-- [ ] Animations
-
-## TODO
-- color background activator
-
-
-## Designs
-
-![#1](designs/ui-1.png)

@@ -18,3 +18,11 @@ html {
 body {
     box-sizing: border-box;
 }
+
+.box-shadow {
+    @include box-shadow();
+}
+
+.center {
+    text-align: center;
+}

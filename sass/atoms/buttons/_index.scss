@@ -4,13 +4,15 @@
 .btn {
     @include text-formatter();
     @include btn-size-modifier();
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
     border-radius: $border-radius;
     min-width: btn-size(width);
     height: btn-size(height);
     padding: 0 $gap;
     border: 0;
     text-transform: uppercase;
-    letter-spacing: .1rem;
+    letter-spacing: .135rem;
     transition: all .3s;
 
     &.outline {

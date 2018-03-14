@@ -1,0 +1,83 @@
+@import '_variables';
+@import '_helpers';
+
+.tooltip {
+    max-width: $tooltip-max-width;
+    position: relative;
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+    }
+    
+    &__content {
+        width: 100%;
+        padding: 2 * $gap;
+        border-radius: $border-radius;
+    }
+
+    &--primary {
+        color: color(white);
+        background-color: color(navy);
+        &:before {
+            border-color: color(navy);
+        }
+    }
+
+    &--secondary {
+        color: color(white);
+        background-color: color(green);
+        &:before {
+            border-color: color(green);
+        }
+    }
+
+    &--top {
+        &:before {
+            bottom: -7px;
+            border-top-width: 7px;
+            border-top-style: solid;
+            border-right: 7px solid transparent;
+            border-left: 7px solid transparent;
+            margin-left: -7px;
+            left: 50%;
+        }
+    }
+
+    &--bottom {
+        &:before {
+            top: -7px;
+            border-bottom-width: 7px;
+            border-bottom-style: solid;
+            border-right: 7px solid transparent;
+            border-left: 7px solid transparent;
+            margin-left: -7px;
+            left: 50%;
+        }
+    }
+
+    &--left {
+        &:before {
+            left: -7px;
+            border-right-width: 7px;
+            border-right-style: solid;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            margin-top: -7px;
+            top: 50%;
+        }
+    }
+
+    &--right {
+        &:before {
+            right: -7px;
+            border-left-width: 7px;
+            border-left-style: solid;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            margin-top: -7px;
+            top: 50%;
+        }
+    }   
+}

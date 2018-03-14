@@ -30,3 +30,16 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+/// To add consistent shadowing feeling
+///
+/// @author liang@bonusway.com
+///
+///
+/// @example scss - box shadowing element
+///   .foo {
+///     @include box-shadow();
+///   }
+@mixin box-shadow {
+    box-shadow: 0 5px 10px 0 rgba(35,49,66,0.10);
+}
