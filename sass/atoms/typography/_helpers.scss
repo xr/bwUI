@@ -46,11 +46,12 @@
 ///
 /// @author liang@bonusway.com
 ///
+/// @param {type} $type - the text type from `$font-sizes` map.
 /// @example scss - set the default and modifiers to selector `.header`.
 ///   .button {
 ///     @include text-formatter();
 ///   }
-@mixin text-formatter() {
-  @include font-size-modifier(text);
+@mixin text-formatter($type: text) {
+  @include font-size-modifier($type);
   line-height: 180%;
 }

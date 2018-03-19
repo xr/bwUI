@@ -15,11 +15,11 @@ $colors: (
 $color-variations: (
     light: (
         function: lighten,
-        parameters: 15%
+        parameters: 6%
     ),
     dark: (
         function: darken,
-        parameters: 15%
+        parameters: 10%
     ),
     fade: (
         function: rgba,

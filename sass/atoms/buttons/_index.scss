@@ -2,7 +2,7 @@
 @import '_helpers';
 
 .btn {
-    @include text-formatter();
+    @include text-formatter(meta-text);
     @include btn-size-modifier();
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -14,6 +14,10 @@
     text-transform: uppercase;
     letter-spacing: .135rem;
     transition: all .3s;
+
+    &--lg {
+        font-size: font-size(small-text);
+    }
 
     &.outline {
         @include color-activator('outline', border-color, 'true');
