@@ -1,29 +1,21 @@
+@import '_variables';
+@import '_helpers';
+
 .notification {
     display: flex;
     border-radius: $border-radius;
-    padding: 2rem;
+    padding: 2 * $gap;
 
     &__icon {
-        flex-basis: 4rem;
-        padding: .7rem 0;
+        flex-basis: 4 * $gap;
+        font-size: font-size(text);
+        padding-top: $notification-icon-padding;
     }
     &--success {
-        border: 1px solid color(green);
-        color: color(green);
-        [class^="icon-"] {
-            background: color(green);
-            border-radius: 50%;
-            padding: .125rem;
-        }
+        @include notification-modifier(green);
     }
 
     &--error {
-        border: 1px solid color(red);
-        color: color(red);
-        [class^="icon-"] {
-            background: color(red);
-            border-radius: 50%;
-            padding: .125rem;
-        }
+        @include notification-modifier(red);
     }
 }

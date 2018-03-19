@@ -1,0 +1,18 @@
+/// This mixin can be used to modify notification
+///
+/// @author liang@bonusway.com
+///
+/// @param {color} $colors - colors of notifications
+/// @example scss
+///   .notification {
+///         @include notification-modifier(green);
+///   }
+@mixin notification-modifier($color) {
+    border: 1px solid color($color);
+    color: color($color);
+    [class^="icon-"] {
+        background: color($color);
+        border-radius: 50%;
+        padding: $notification-icon-padding;
+    }
+}

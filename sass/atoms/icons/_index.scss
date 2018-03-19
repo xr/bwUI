@@ -1,3 +1,5 @@
+@import '_variables';
+
 [class^="icon-"] {
-    @include font-size-modifier(icon);
+    @include font-size-modifier(icon, $icon-sizes-variations);
 }

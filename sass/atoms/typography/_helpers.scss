@@ -1,4 +1,4 @@
-@function font-size($type, $variation: false) {
+@function font-size($type, $variation: false, $variations: $font-sizes-variations) {
     @if map-has-key($font-sizes, $type) {
       $type: map-get($font-sizes, $type);
     } @else {
@@ -8,10 +8,10 @@
     }
   
     @if $variation {
-      @if not map-has-key($font-sizes-variations, $variation) {
+      @if not map-has-key($variations, $variation) {
         @error "Invalid $variation: `#{$variation}`.";
       } @else {
-        $variation-value: map-get($font-sizes-variations, $variation);
+        $variation-value: map-get($variations, $variation);
         @return $type * $variation-value;
       }
     }
@@ -24,20 +24,21 @@
 /// @author liang@bonusway.com
 ///
 /// @param {name} $name - the property name from `$font-sizes` map.
+/// @param {variation} $variation - the property variation from `font-sizes-variations` map (default).
 /// @example scss - set the default and modifiers to selector `.header`.
 ///   .header {
 ///     @include font-size-modifier(header);
 ///   }
 
-@mixin font-size-modifier($name) {
+@mixin font-size-modifier($name, $variations: $font-sizes-variations) {
   $base-size: map-get($font-sizes, $name);
   & {
       font-size: $base-size;
   }
 
-  @each $variation-name, $variation-value in $font-sizes-variations {
+  @each $variation-name, $variation-value in $variations {
       &.#{$name}--#{$variation-name} {
-          font-size: font-size($name, $variation-name);
+          font-size: font-size($name, $variation-name, $variations);
       }
   }
 }
