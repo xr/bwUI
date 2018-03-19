@@ -1,0 +1,18 @@
+.notification {
+    display: flex;
+    border-radius: $border-radius;
+    padding: 2rem;
+
+    &__icon {
+        flex-basis: 5rem;
+    }
+    &--success {
+        border: 1px solid color(green);
+        color: color(green);
+    }
+
+    &--error {
+        border: 1px solid color(red);
+        color: color(red);
+    }
+}
