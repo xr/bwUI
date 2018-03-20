@@ -1,0 +1,69 @@
+@import '_variables';
+
+::placeholder {
+    color: color(grey);
+}
+
+.input {
+    position: relative;
+
+    [class^="icon-"] {
+        position: absolute;
+        right: 2rem;
+        top: 2rem;
+        opacity: 0;
+        transition: all .3s;
+    }
+
+    &__error {
+        display: block;
+        padding: $meta-text-top 0 0 0;
+        transition: all .3s;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    input:focus:invalid + &__error {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    input:focus:valid + &__error {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    input:focus:invalid ~ [class^="icon-cross"] {
+        opacity: 1;
+    }
+
+    &--disabled {
+        input {
+            background-color: color(light-grey);
+        }
+    }
+}
+
+.input-metadata {
+    padding: $meta-text-top 0;
+}
+
+input {
+    height: $input-height;
+    border-radius: $border-radius;
+    border: 1px solid color(grey, lighter);
+    font-size: font-size(text);
+    transition: all .3s;
+    width: 100%;
+    text-indent: $text-indent;
+    padding-right: 3rem;
+
+    &:focus {
+        outline: none;
+        @include box-shadow;
+    }
+
+    &:focus:invalid {
+        border: 1px solid color(red);
+    }
+}

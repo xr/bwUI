@@ -56,7 +56,6 @@ body {
 
 .meta-text {
     @include font-size-modifier(meta-text);
-    color: color(gray);
 }
 
 a {

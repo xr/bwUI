@@ -17,6 +17,10 @@ $color-variations: (
         function: lighten,
         parameters: 6%
     ),
+    lighter: (
+        function: lighten,
+        parameters: 20%
+    ),
     dark: (
         function: darken,
         parameters: 6%
