@@ -11,8 +11,11 @@
         position: absolute;
         right: 2rem;
         top: 2rem;
-        opacity: 0;
-        transition: all .3s;
+        
+        &.toggle {
+            opacity: 0;
+            transition: all .3s;
+        }
     }
 
     &__error {
@@ -60,7 +63,6 @@ input {
 
     &:focus {
         outline: none;
-        @include box-shadow;
     }
 
     &:focus:invalid:not(:placeholder-shown) {
