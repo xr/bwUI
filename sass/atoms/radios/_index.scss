@@ -54,4 +54,13 @@
 	&__input:checked ~ &__label &__button::after {
         opacity: 1;
     }
+
+    &.disabled {
+    	opacity: .6;
+
+    	.radio__button {
+    		border: 1px solid color(grey, lighter);
+    		background-color: color(light-grey);
+    	}
+    }
 }
