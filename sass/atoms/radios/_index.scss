@@ -1,68 +1,18 @@
 @import '_variables';
+@import '_helpers';
 
 .radio {
-	display: inline-block;
-
-	&__input {
-		display: none;
-	}
-
-	&__label {
-        cursor: pointer;
-        position: relative;
-        padding-left: 3rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-	}
-
-	&:hover {
-		.radio__button {
-			border: 1px solid color(blue);
-		}
-    }
-
 	&__button {
-		height: $radio-size;
-        width: $radio-size;
-        border: 1px solid color(grey, lighter);
         border-radius: 50%;
-        display: inline-block;
-        position: absolute;
-        left: 0;
-        transition: all .3s;
 
         &::after {
             content: "";
-            display: block;
             height: .5rem;
             width: .5rem;
             border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             background-color: color(white);
-            opacity: 0;
-            transition: opacity .3s;
         }
 	}
 
-	&__input:checked ~ &__label &__button {
-		border: 0;
-		background-color: color(blue);
-	}
-
-	&__input:checked ~ &__label &__button::after {
-        opacity: 1;
-    }
-
-    &.disabled {
-    	opacity: .6;
-
-    	.radio__button {
-    		border: 1px solid color(grey, lighter);
-    		background-color: color(light-grey);
-    	}
-    }
+    @include check-element-setup(radio);
 }

@@ -1,0 +1,15 @@
+.checkbox {
+	&__button {
+        border-radius: $border-radius;
+
+        &::after {
+        	font-family: 'icomoon' !important;
+            content: "\53";
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: color(white);
+        }
+	}
+
+	@include check-element-setup(checkbox);
+}

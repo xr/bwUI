@@ -1,0 +1,66 @@
+/// This mixin can be used to setup checked element, custome style i.e checkbox and ratios
+///
+/// @author liang@bonusway.com
+///
+/// @param {class} $class - parent class name
+/// @example scss
+@mixin check-element-setup($class) {
+	display: inline-block;
+
+	&__input {
+		display: none;
+	}
+
+	&__label {
+        cursor: pointer;
+        position: relative;
+        padding-left: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        user-select: none;
+	}
+
+	&__button {
+		height: $check-element-size;
+        width: $check-element-size;
+        border: 1px solid color(grey, lighter);
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        transition: all .3s;
+
+        &::after {
+        	display: block;
+        	position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity .3s;
+        }
+	}
+
+	&:not(.disabled):hover {
+		.#{$class}__button {
+			border: 1px solid color(blue);
+		}
+    }
+	&__input:checked ~ &__label &__button {
+		border: 0;
+		background-color: color(blue);
+	}
+
+	&__input:checked ~ &__label &__button::after {
+        opacity: 1;
+    }
+
+    &.disabled {
+    	opacity: .6;
+
+    	.#{$class}__button {
+    		border: 1px solid color(grey, lighter);
+    		background-color: color(light-grey);
+    	}
+    }
+}
