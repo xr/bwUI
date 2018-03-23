@@ -1,0 +1,37 @@
+.toggle {
+    display: inline-block;
+
+    &__input {
+        display: none;
+        &:checked + .toggle__label {
+            @include color-activator('bg-on-toggle', background-color, true);
+            &:after {
+                left: 50%;
+            }
+        }
+    }
+
+    &__label {
+        background: color(grey, lighter);
+        border-radius: 2em;
+        padding: .2rem;
+        transition: all .3s ease;
+        display: block;
+        width: 6rem;
+        height: 3rem;
+        position: relative;
+        cursor: pointer;
+        &:after {
+            position: relative;
+			display: block;
+            content: "";
+            margin: 5%;
+			width: 40%;
+            height: 80%;
+            left: 0;
+            border-radius: 50%;
+            background: color(white);
+            transition: all .3s ease;
+        }
+    }
+}
