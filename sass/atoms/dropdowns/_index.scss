@@ -7,6 +7,8 @@
     input {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
+        cursor: pointer;
+        background-color: transparent;
     }
 
     input::placeholder {
@@ -17,13 +19,20 @@
         position: absolute;
         right: 1rem;
         top: 2rem;
+        z-index: -1;
     }
 
     input:focus + [class^="icon-"]::before {
         content: "\57";
     }
 
+    input:focus ~ &__select {
+        @include visible();
+    }
+
     &__select {
+        @include transition();
+        @include invisible();
         border: 1px solid color(grey, lighter);
         outline: 0;
         border-top: 0;
