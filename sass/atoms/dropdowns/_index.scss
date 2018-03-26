@@ -22,11 +22,11 @@
         z-index: -1;
     }
 
-    &__search:focus + [class^="icon-"]::before {
+    &.active [class^="icon-"]::before {
         content: "\57";
     }
 
-    &__search:focus ~ &__menu {
+    &.active &__menu {
         @include visible();
     }
 

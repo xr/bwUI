@@ -41,13 +41,6 @@ $.fn.dropdown = function (parameters) {
         var elementNamespace,
         id;
 
-        $items.each(function () {
-            $(this).on('click touch', function () {
-                $search.val($(this).text());
-            });
-            //console.log($(this).text());
-        });
-
         var instance = $module.data(moduleNamespace);
 
         var module = {
@@ -82,6 +75,7 @@ $.fn.dropdown = function (parameters) {
             bind: {
                 events: function () {
                     module.bind.keyboardEvents();
+                    module.bind.mouseEvents();
                 },
                 keyboardEvents: function () {
                     module.debug('Binding keyboard events');
@@ -92,6 +86,31 @@ $.fn.dropdown = function (parameters) {
                     // if (module.has.search()) {
                     //     $module.on(module.get.inputEvents() + eventNamespace, selector.search, module.event.input);
                     // }
+                },
+                mouseEvents: function () {
+                    module.debug('Binding mouse events');
+                    $menu.on('click' + eventNamespace, module.event.item.click);
+                    if (settings.on === 'click') {
+                        $search.on('click' + eventNamespace, module.toggle);
+                    }
+
+                    $document.on('click', module.test.hide)
+                }
+            },
+            test: {
+                hide: function (event) {
+                    // TODO: abstract this event out
+                    var $target = $(event.target),
+                    inDocument = ($target.closest(document.documentElement).length > 0),
+                    inModule = ($target.closest($module).length > 0);
+                    if(inDocument && !inModule) {
+                        module.debug('hide module');
+                        module.hide();
+                        return true;
+                    } else {
+                        module.debug('Event occurred in dropdown, canceling callback');
+                        return false;
+                    }
                 }
             },
             set: {
@@ -135,10 +154,19 @@ $.fn.dropdown = function (parameters) {
                   },
                   selectItem: function ($item) {
                       module.debug('Setting user selection to item', $item);
+                      $items.removeClass('selected');
+                      $item.addClass('selected');
                       $search.val($item.text());
                   }
             },
             event: {
+                item: {
+                    click: function (event) {
+                        var $target = $(event.target);
+                        module.set.selectItem($target);
+                        module.toggle();
+                    }
+                },
                 keydown: function (event) {
                     var pressedKey = event.which,
                     isShortcutKey = module.is.inObject(pressedKey, keys);
@@ -235,6 +263,9 @@ $.fn.dropdown = function (parameters) {
                 focusedOnSearch: function () {
                     return (document.activeElement === $search[0]);
                 },
+                visible: function () {
+                    return $search.hasClass('active');
+                },
                 multiple: function () {
                     // will support in the future
                     return $module.hasClass(className.multiple);
@@ -301,7 +332,16 @@ $.fn.dropdown = function (parameters) {
                   }
                   performance = [];
                 }
-              }
+            },
+            show: function () {
+                $module.addClass('active');
+            },
+            hide: function () {
+                $module.removeClass('active');
+            },
+            toggle: function () {
+                $module.toggleClass('active');
+            }
         }
         // initialize
         if (instance !== undefined) {
@@ -320,6 +360,7 @@ $.fn.dropdown.settings = {
     debug: true,
     performance: true,
     namespace: 'dropdown',
+    on: 'click',
     selectOnKeydown: true,
     keys: {
         backspace: 8,
