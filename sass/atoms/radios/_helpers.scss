@@ -22,13 +22,13 @@
 	}
 
 	&__button {
+        @include transition();
 		height: $check-element-size;
         width: $check-element-size;
         border: 1px solid color(grey, lighter);
         display: inline-block;
         position: absolute;
         left: 0;
-        transition: all .3s;
 
         &::after {
         	display: block;
