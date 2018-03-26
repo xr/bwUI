@@ -4,14 +4,14 @@
     position: relative;
     min-height: $dropdown-height;
 
-    input {
+    &__text {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
         cursor: pointer;
         background-color: transparent;
     }
 
-    input::placeholder {
+    &__text::placeholder {
         color: color(navy);
     }
 
@@ -22,15 +22,15 @@
         z-index: -1;
     }
 
-    input:focus + [class^="icon-"]::before {
+    &__text:focus + [class^="icon-"]::before {
         content: "\57";
     }
 
-    input:focus ~ &__select {
+    &__text:focus ~ &__menu {
         @include visible();
     }
 
-    &__select {
+    &__menu {
         @include transition();
         @include invisible();
         border: 1px solid color(grey, lighter);
@@ -40,7 +40,7 @@
         border-bottom-right-radius: $border-radius;
     }
 
-    &__option {
+    &__item {
         @include transition();
         font-size: 1.6rem;
         cursor: pointer;
