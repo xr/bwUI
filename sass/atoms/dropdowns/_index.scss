@@ -1,24 +1,26 @@
 @import '_variables';
 
 .dropdown {
-    &__input {
-        position: relative;
-        height: $dropdown-height;
+    position: relative;
+    min-height: $dropdown-height;
 
-        input {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        }
+    input {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
 
-        input::placeholder {
-            color: color(navy);
-        }
+    input::placeholder {
+        color: color(navy);
+    }
 
-        [class^="icon-"] {
-            position: absolute;
-            right: 1rem;
-            top: 2rem;
-        }
+    [class^="icon-"] {
+        position: absolute;
+        right: 1rem;
+        top: 2rem;
+    }
+
+    input:focus + [class^="icon-"]::before {
+        content: "\57";
     }
 
     &__select {
@@ -32,6 +34,7 @@
     &__option {
         @include transition();
         font-size: 1.6rem;
+        cursor: pointer;
         text-indent: $text-indent;
         height: $dropdown-height;
         line-height: $dropdown-height;

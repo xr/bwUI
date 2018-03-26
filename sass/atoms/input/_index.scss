@@ -20,20 +20,17 @@
 
     &__error {
         @include transition();
+        @include invisible();
         display: block;
         padding: $meta-text-top 0 0 0;
-        opacity: 0;
-        visibility: hidden;
     }
 
     input:focus:invalid:not(:placeholder-shown) + &__error {
-        opacity: 1;
-        visibility: visible;
+        @include visible();
     }
 
     input:focus:valid + &__error {
-        opacity: 0;
-        visibility: hidden;
+        @include invisible();
     }
 
     input:focus:invalid:not(:placeholder-shown) ~ [class^="icon-cross"] {

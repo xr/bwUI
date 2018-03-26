@@ -52,3 +52,23 @@
 @mixin transition {
     transition: all .3s;
 }
+
+/// To hide element for transition
+///
+/// @author liang@bonusway.com
+///
+///
+@mixin invisible {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/// To show element for transition
+///
+/// @author liang@bonusway.com
+///
+///
+@mixin visible {
+    opacity: 1;
+    visibility: visible;
+}
