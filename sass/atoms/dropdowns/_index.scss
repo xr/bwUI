@@ -4,14 +4,14 @@
     position: relative;
     min-height: $dropdown-height;
 
-    &__text {
+    &__search {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
         cursor: pointer;
         background-color: transparent;
     }
 
-    &__text::placeholder {
+    &__search::placeholder {
         color: color(navy);
     }
 
@@ -22,11 +22,11 @@
         z-index: -1;
     }
 
-    &__text:focus + [class^="icon-"]::before {
+    &__search:focus + [class^="icon-"]::before {
         content: "\57";
     }
 
-    &__text:focus ~ &__menu {
+    &__search:focus ~ &__menu {
         @include visible();
     }
 
@@ -36,6 +36,8 @@
         border: 1px solid color(grey, lighter);
         outline: 0;
         border-top: 0;
+        max-height: 40rem;
+        overflow: scroll;
         border-bottom-left-radius: $border-radius;
         border-bottom-right-radius: $border-radius;
     }
@@ -47,7 +49,8 @@
         text-indent: $text-indent;
         height: $dropdown-height;
         line-height: $dropdown-height;
-        &:hover {
+
+        &.selected, &:hover {
             color: color(blue);
             background-color: color(light-grey);
         }

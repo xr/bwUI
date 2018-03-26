@@ -22,6 +22,9 @@ $.fn.dropdown = function (parameters) {
           ? $.extend(true, {}, $.fn.dropdown.settings, parameters)
           : $.extend({}, $.fn.dropdown.settings);
 
+        var keys = settings.keys;
+        var className = settings.className;
+
         var namespace = settings.namespace,
         eventNamespace = '.' + namespace,
         moduleNamespace = 'module-' + namespace;
@@ -29,7 +32,7 @@ $.fn.dropdown = function (parameters) {
         var selector = settings.selector;
         var $module = $(this);
         
-        var $text = $module.children(selector.text);
+        var $search = $module.children(selector.search);
         var $menu = $module.children(selector.menu);
         var $items = $menu.children(selector.item);
 
@@ -38,22 +41,21 @@ $.fn.dropdown = function (parameters) {
         var elementNamespace,
         id;
 
-        $text.val(222);
-
         $items.each(function () {
             $(this).on('click touch', function () {
-                $text.val($(this).text());
+                $search.val($(this).text());
             });
             //console.log($(this).text());
         });
 
         var instance = $module.data(moduleNamespace);
-        console.log('instance', instance);
-
 
         var module = {
             initialize: function () {
                 module.debug('initializing dropdown', settings);
+                module.create.id();
+                module.bind.events();
+
                 module.instantiate();
             },
             instantiate: function() {
@@ -75,6 +77,170 @@ $.fn.dropdown = function (parameters) {
                     id = (Math.random().toString(16) + '000000000').substr(2, 8);
                     elementNamespace = '.' + id;
                     module.debug('Creating unique id for element', id);
+                }
+            },
+            bind: {
+                events: function () {
+                    module.bind.keyboardEvents();
+                },
+                keyboardEvents: function () {
+                    module.debug('Binding keyboard events');
+                    $module.on('keydown' + eventNamespace, module.event.keydown);
+                    
+                    // if the input is for search purpose
+                    // todo:
+                    // if (module.has.search()) {
+                    //     $module.on(module.get.inputEvents() + eventNamespace, selector.search, module.event.input);
+                    // }
+                }
+            },
+            set: {
+                scrollPosition: function($item, forceScroll) {
+                    var
+                      edgeTolerance = 5,
+                      $menu,
+                      hasActive,
+                      offset,
+                      itemOffset,
+                      menuOffset,
+                      menuScroll,
+                      menuHeight,
+                      abovePage,
+                      belowPage;
+        
+                    $item       = $item || module.get.selectedItem();
+                    $menu       = $item.closest(selector.menu);
+                    hasActive   = ($item && $item.length > 0);
+                    forceScroll = (forceScroll !== undefined)
+                      ? forceScroll
+                      : false
+                    ;
+                    if($item && $menu.length > 0 && hasActive) {
+                      itemOffset = $item.position().top;
+
+                      menuScroll = $menu.scrollTop();
+                      menuOffset = $menu.offset().top;
+                      itemOffset = $item.offset().top;
+                      offset     = menuScroll - menuOffset + itemOffset;
+                      if(!forceScroll) {
+                        menuHeight = $menu.height();
+                        belowPage  = menuScroll + menuHeight < (offset + edgeTolerance);
+                        abovePage  = ((offset - edgeTolerance) < menuScroll);
+                      }
+                      module.debug('Scrolling to active item', offset);
+                      if(forceScroll || abovePage || belowPage) {
+                        $menu.scrollTop(offset);
+                      }
+                    }
+                  },
+                  selectItem: function ($item) {
+                      module.debug('Setting user selection to item', $item);
+                      $search.val($item.text());
+                  }
+            },
+            event: {
+                keydown: function (event) {
+                    var pressedKey = event.which,
+                    isShortcutKey = module.is.inObject(pressedKey, keys);
+
+                    if (isShortcutKey && module.is.focusedOnSearch) {
+                        module.debug(event);
+                        var $currentlySelected = $items.not(selector.unselectable).filter('.' + className.selected).eq(0);
+                        var $activeItem = $menu.children('.' + className.active).eq(0);
+                        var $selectedItem = ($currentlySelected.length > 0) ? $currentlySelected : $activeItem;
+                        var $visibleItems = ($selectedItem.length > 0)
+                        ? $selectedItem.siblings(':not(.' + className.filtered +')').addBack()
+                        : $menu.children(':not(.' + className.filtered +')');
+
+                        var inVisibleMenu = ($menu.css('opacity') == 1);
+                        var hasSelectedItem = $selectedItem.length > 0;
+                        var $nextItem;
+
+                        console.log($currentlySelected.text());
+
+                        if (pressedKey == keys.upArrow) {
+                            $nextItem = (hasSelectedItem && inVisibleMenu) 
+                            ? $selectedItem.prevAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
+                            : $items.eq(0);
+
+                            if ($visibleItems.index( $nextItem ) < 0) {
+                                module.debug('Up key pressed but reached top of current menu');
+                                event.preventDefault();
+                                return;
+                            } else {
+                                module.debug('Up key pressed, changing active item');
+                                $selectedItem.removeClass(className.selected);
+                                $nextItem.addClass(className.selected);
+                                module.set.scrollPosition($nextItem);
+                                if(settings.selectOnKeydown && module.is.single()) {
+                                    module.set.selectItem($nextItem);
+                                }
+                            }
+                            event.preventDefault();
+                        }
+
+                        if(pressedKey == keys.downArrow) {
+                            $nextItem = (hasSelectedItem && inVisibleMenu)
+                              ? $selectedItem.nextAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
+                              : $items.eq(0)
+                            ;
+                            if($nextItem.length === 0) {
+                              module.debug('Down key pressed but reached bottom of current menu');
+                              event.preventDefault();
+                              return;
+                            }
+                            else {
+                              module.debug('Down key pressed, changing active item');
+                              $selectedItem.removeClass(className.selected);
+                              $nextItem.addClass(className.selected);
+                              module.set.scrollPosition($nextItem);
+                              if(settings.selectOnKeydown && module.is.single()) {
+                                module.set.selectItem($nextItem);
+                              }
+                            }
+                            event.preventDefault();
+                        }
+                    }
+                }
+            },
+            get: {
+                inputEvents: function () {
+                    var input = $search[0];
+                    if(input) {
+                        return  (input.oninput !== undefined) ? 'input' : (input.onpropertychange !== undefined) ? 'propertychange': 'keyup';
+                    }
+                    return false;
+                },
+                selectedItem: function () {
+                    var $selectedItem = $items.not(selector.unselectable).filter('.'  + className.selected);
+                    return ($selectedItem.length > 0) ? $selectedItem : $items.eq(0);
+                }
+            },
+            has: {
+                search: function () {
+                    return ($search.length > 0);
+                }
+            },
+            is: {
+                inObject: function (needle, object) {
+                    var found = false;
+                    $.each(object, function(index, property) {
+                    if(property == needle) {
+                        found = true;
+                        return true;
+                    }
+                    });
+                    return found;
+                },
+                focusedOnSearch: function () {
+                    return (document.activeElement === $search[0]);
+                },
+                multiple: function () {
+                    // will support in the future
+                    return $module.hasClass(className.multiple);
+                },
+                single: function () {
+                    return !module.is.multiple();
                 }
             },
             debug: function() {
@@ -154,6 +320,7 @@ $.fn.dropdown.settings = {
     debug: true,
     performance: true,
     namespace: 'dropdown',
+    selectOnKeydown: true,
     keys: {
         backspace: 8,
         delimiter: 188, // comma
@@ -168,9 +335,16 @@ $.fn.dropdown.settings = {
         downArrow: 40
     },
     selector: {
-        'text': '.dropdown__text',
-        'menu': '.dropdown__menu',
-        'item': '.dropdown__item'
+        search: '.dropdown__search',
+        menu: '.dropdown__menu',
+        item: '.dropdown__item',
+        unselectable: '.disabled'
+    },
+    className: {
+        selected: 'selected',
+        active: 'active',
+        filtered: 'filtered',
+        multiple: 'multiple'
     }
 }
 
