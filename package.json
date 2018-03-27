@@ -7,11 +7,13 @@
     "watch:sass": "./node_modules/.bin/node-sass sass/main.scss css/style.css -w",
     "devserver": "./node_modules/.bin/live-server",
     "start": "./node_modules/.bin/npm-run-all --parallel devserver watch:sass",
-    "build": "./node_modules/.bin/npm-run-all compile prefix compress clean doc",
+    "build": "./node_modules/.bin/npm-run-all compile prefix compress webpack-build clean doc",
     "compile": "node-sass sass/main.scss css/style.comp.css",
     "prefix": "postcss --use autoprefixer -b 'last 10 versions' css/style.comp.css -o css/style.prefix.css",
     "compress": "./node_modules/.bin/node-sass css/style.prefix.css css/style.css --output-style compressed",
     "clean": "./node_modules/.bin/del-cli css/style.*.css",
+    "webpack-build": "./node_modules/.bin/webpack --mode production",
+    "webpack-watch": "./node_modules/.bin/webpack --watch true --mode development",
     "doc": "./node_modules/.bin/sassdoc ./sass/ -d doc/"
   },
   "author": "",
@@ -25,6 +27,10 @@
     "node-sass": "^4.7.2",
     "npm-run-all": "^4.1.2",
     "postcss-cli": "^5.0.0",
-    "sassdoc": "^2.5.0"
+    "sassdoc": "^2.5.0",
+    "ts-loader": "^4.1.0",
+    "typescript": "^2.7.2",
+    "webpack": "^4.3.0",
+    "webpack-cli": "^2.0.13"
   }
 }
