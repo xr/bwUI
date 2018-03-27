@@ -1,5 +1,5 @@
 import { Observable } from '../../utils/observer';
-import Dropdown from './Dropdown';
+import Dropdown from './dropdown.class';
 
 
 class DropdownManager {
@@ -10,8 +10,8 @@ class DropdownManager {
         this._bindEvents();
     }
 
-    add(opts: object) {
-        let dropdown = new Dropdown(opts);
+    add($module, opts?: object) {
+        let dropdown = new Dropdown($module, opts);
         this._dropdowns.add(dropdown);
         return dropdown;
     }

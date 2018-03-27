@@ -6,7 +6,7 @@
   "scripts": {
     "watch:sass": "./node_modules/.bin/node-sass sass/main.scss css/style.css -w",
     "devserver": "./node_modules/.bin/live-server",
-    "start": "./node_modules/.bin/npm-run-all --parallel devserver watch:sass",
+    "start": "./node_modules/.bin/npm-run-all --parallel devserver watch:sass webpack-watch",
     "build": "./node_modules/.bin/npm-run-all compile prefix compress webpack-build clean doc",
     "compile": "node-sass sass/main.scss css/style.comp.css",
     "prefix": "postcss --use autoprefixer -b 'last 10 versions' css/style.comp.css -o css/style.prefix.css",

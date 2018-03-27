@@ -1,4 +1,4 @@
-import IObserver from './Observer';
+import IObserver from './observer.interface';
 
 export default class Observable {
 	private observers: IObserver[] = [];

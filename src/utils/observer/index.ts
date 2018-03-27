@@ -1,5 +1,5 @@
-import IObserver from './Observer';
-import Observable from './Observable';
+import IObserver from './observer.interface';
+import Observable from './observable.class';
 
 export {
     IObserver,

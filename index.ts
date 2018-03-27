@@ -1,11 +1,7 @@
 import { dropdownManager } from '@bwui';
 
+declare let $;
 
-dropdownManager.add({
-    debug: true
-});
-dropdownManager.add({
-    debug: true
-});
-
-console.log(dropdownManager.list());
+dropdownManager.add(
+    $('.dropdown')
+);

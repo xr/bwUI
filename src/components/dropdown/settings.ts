@@ -1,7 +1,5 @@
-let config = {
+let settings = {
     name: 'Dropdown',
-    debug: false,
-    performance: false,
     on: 'click',
     selectOnKeydown: true,
     keys: {
@@ -31,4 +29,4 @@ let config = {
     }
 };
 
-export default config;
+export default settings;
