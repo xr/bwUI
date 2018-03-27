@@ -1,11 +1,11 @@
-import { dropdownManager } from './lib';
+import { dropdownManager } from '@bwui';
 
 
 dropdownManager.add({
-    name: 'liang'
+    debug: true
 });
 dropdownManager.add({
-    name: 'hoang'
+    debug: true
 });
 
 console.log(dropdownManager.list());

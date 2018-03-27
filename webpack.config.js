@@ -12,7 +12,12 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ]
+    extensions: [ '.tsx', '.ts', '.js' ],
+    alias: {
+      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@bwui': path.resolve(__dirname, 'src/')
+    }
   },
   output: {
     filename: 'bundle.js',

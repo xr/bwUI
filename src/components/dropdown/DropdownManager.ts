@@ -1,5 +1,6 @@
-import { IObserver, Observable } from '../../utils/observer';
+import { Observable } from '../../utils/observer';
 import Dropdown from './Dropdown';
+
 
 class DropdownManager {
     private _dropdowns: Observable = new Observable();
@@ -12,6 +13,7 @@ class DropdownManager {
     add(opts: object) {
         let dropdown = new Dropdown(opts);
         this._dropdowns.add(dropdown);
+        return dropdown;
     }
 
     list() {
