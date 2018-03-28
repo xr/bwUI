@@ -1,6 +1,8 @@
-import dropdownManager from './dropdownManager.service';
+import DropdownManager from './dropdownManager.class';
+import Dropdown from './dropdown.class';
 
 
 export {
-    dropdownManager
+    DropdownManager,
+    Dropdown
 };

@@ -1,5 +1,6 @@
-import { dropdownManager } from '@components/dropdown'
+import { DropdownManager, Dropdown } from '@components/dropdown'
 
 export {
-    dropdownManager
+    DropdownManager,
+    Dropdown
 };
