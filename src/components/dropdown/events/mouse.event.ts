@@ -5,7 +5,7 @@ declare let $;
 
 class MouseEvent implements IObserver {
     private $module;
-    private _settings;
+    private settings;
     private $search;
     private $menu;
     
@@ -16,9 +16,9 @@ class MouseEvent implements IObserver {
         this.subscribe(dropdown);
 
         this.$module = dropdown.get().$module;
-        this._settings = dropdown.get().settings;
-        this.$search = this.$module.children(this._settings.selector.search);
-        this.$menu = this.$module.children(this._settings.selector.menu);
+        this.settings = dropdown.get().settings;
+        this.$search = this.$module.children(this.settings.selector.search);
+        this.$menu = this.$module.children(this.settings.selector.menu);
 
         this.$search.on('click', this.moduleHandler.bind(this));
         this.$menu.on('click', this.menuHandler.bind(this));
@@ -26,7 +26,9 @@ class MouseEvent implements IObserver {
 
     private moduleHandler() {
         console.log('handle mouse module', this.$module);
-        this.$module.toggleClass(this._settings.className.active);
+        console.log('this.settings', this.settings);
+        this.$module.toggleClass(this.settings.className.active);
+        //this.$module.addClass(this.settings.className.active);
     }
 
     private menuHandler(event) {
