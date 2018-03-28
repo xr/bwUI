@@ -26,7 +26,7 @@ export default class Observable {
 
 	notify(data?: any) {
 		for (let observer in this.observers) {
-			this.observers[observer].onUpdate();
+			this.observers[observer].update();
 		}
 	}
 }

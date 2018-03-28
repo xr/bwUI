@@ -20,7 +20,7 @@ class KeyboardEvent implements IObserver {
         this.dropdown.notify('hahha');
     }
 
-    onUpdate(data) {
+    update(data) {
         console.log('KeyboardEvent: some thing happend from the observable dropdown', data);
     }
 

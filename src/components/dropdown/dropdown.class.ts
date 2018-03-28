@@ -2,15 +2,20 @@ import { IObserver, Observable } from '@utils/observer';
 import { KeyboardEvent, MouseEvent } from './events';
 import { DropdownManager } from '@components/dropdown';
 import settings from './settings';
+import DropdownHelper from './dropdownHelper.class';
 
 class Dropdown extends Observable implements IObserver {
     private settings = settings;
+    private helper;
+    private selected;
+    private invokeQueue = [];
     private dropdownManager; // will store the observable the dropdown subscribe to
 
     constructor(private $module, private opts?: object) {
         super();
         console.log('initialize Dropdown with $module:', $module);
         this.settings = (<any>Object).assign({}, this.settings, opts);
+        this.helper = new DropdownHelper(this);
         this.bindEvents();
     }
 
@@ -19,19 +24,35 @@ class Dropdown extends Observable implements IObserver {
         let mouseEvent = new MouseEvent(this);
     }
 
+    private digest() {
+        this.invokeQueue.forEach((cb) => {
+            cb.call(this, this.selected);
+        });
+    }
+
     get() {
         return {
             $module: this.$module,
-            settings: this.settings
+            settings: this.settings,
+            helper: this.helper
         }
+    }
+
+    getSelected() {
+        return this.selected;
+    }
+
+    // act as event listeners register
+    // listeners can be invoked from `digest` method
+    onUpdate(cb) {
+        this.invokeQueue.push(cb);
     }
 
     // act as observable, override the notify method of observable
     notify(data?: any) {
-        console.log('get some data from children', data);
-        for (let observer in this.observers) {
-			this.observers[observer].onUpdate(data);
-        }
+        console.log('get some data from events', data);
+        // for now no need to check the events, just store the payload
+        this.selected = [ data.payload ];
 
         // if dropdown has any observable, then notify it
         if (this.dropdownManager) {
@@ -40,6 +61,8 @@ class Dropdown extends Observable implements IObserver {
                 data: 'hello'
             });
         }
+
+        this.digest();
     }
 
     // act as observer
@@ -53,7 +76,7 @@ class Dropdown extends Observable implements IObserver {
         dropdownManager.detach(this);
     }
 
-    onUpdate() {
+    update() {
         console.log('Dropdown: some thing happend on the subscribed dropdownManager');
     }
 }

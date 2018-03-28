@@ -6,40 +6,46 @@ declare let $;
 class MouseEvent implements IObserver {
     private $module;
     private settings;
+    private helper;
     private $search;
     private $menu;
-    
+
     constructor(private dropdown: Dropdown) {
         console.log('construct mouse event');
 
+        // assign the public properties from dropdown
+        (<any>Object).assign(this, dropdown.get());
+
+        let { search, menu } = this.settings.selector;
+        this.$search = this.$module.children(search);
+        this.$menu = this.$module.children(menu);
+
         // for the events, we subscribe automatically
         this.subscribe(dropdown);
+        this.bindEvent();
+    }
 
-        this.$module = dropdown.get().$module;
-        this.settings = dropdown.get().settings;
-        this.$search = this.$module.children(this.settings.selector.search);
-        this.$menu = this.$module.children(this.settings.selector.menu);
-
+    private bindEvent() {
         this.$search.on('click', this.moduleHandler.bind(this));
         this.$menu.on('click', this.menuHandler.bind(this));
     }
 
     private moduleHandler() {
-        console.log('handle mouse module', this.$module);
-        console.log('this.settings', this.settings);
-        this.$module.toggleClass(this.settings.className.active);
-        //this.$module.addClass(this.settings.className.active);
+        this.helper.toggle();
     }
 
     private menuHandler(event) {
         let $target = $(event.target);
-        // TODO: select item
-        // change the search input text
-        // close the module
-        console.log('handle menu click', $target.text());
+        this.helper.selectItem($target);
+        let selectedValue = $target.data('value');
+        this.dropdown.notify({
+            event: 'mouse',
+            payload: selectedValue
+        });
     }
 
-    onUpdate(data) {
+    update(data) {
+        // no need for now
         console.log('MouseEvent: some thing happend from the observable dropdown', data);
     }
 

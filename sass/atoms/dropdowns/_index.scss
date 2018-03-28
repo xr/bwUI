@@ -28,6 +28,7 @@
 
     &.active &__menu {
         @include visible();
+        cursor: pointer;
     }
 
     &__menu {
@@ -45,7 +46,6 @@
     &__item {
         @include transition();
         font-size: 1.6rem;
-        cursor: pointer;
         text-indent: $text-indent;
         height: $dropdown-height;
         line-height: $dropdown-height;
