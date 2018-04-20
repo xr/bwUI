@@ -1,28 +1,6 @@
-## Principles
+## An utility, atomic design based css library
 
-Build a modern UI library that cares about:
-
-	- responsive
-		- suitable for all countries (widths, different languages etc)
-		- fluid layout
-		- media queries (adaptive/desktop-first)
-		- relative units
-
-	- maintainable, scalable, reliable
-		- guidance
-		- architecture
-		- reusable
-		- growth
-		- naming
-		- clean code
-		- autoprefixer
-	
-	- performance
-		- only built what we need
-		- less redundant vendors
-		- less images (build process, base64 for small images)
-		- uglify
-
+Starting from the atomic elements and build molecules, organisms, pages on top of it, please refer to the available elments and classes from this full page [demo](https://s3-eu-west-1.amazonaws.com/bonusway-ui/index.html).
 
 ##  Architecture 
 
@@ -60,14 +38,6 @@ sass/
 |
 `– main.scss             # Main sass entry file
 ```
-
-## Demo
-
-Please check the `index.html` page in the repo. (not responsive, please check via desktop)
-
-## CSS guidelines
-
-[Airbnb](https://github.com/airbnb/css)
 
 ## naming convention
 - [BEM](http://getbem.com/) (`.block__element-name--modifier`)
