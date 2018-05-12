@@ -1,6 +1,10 @@
 ## An utility, atomic design based css library
 
-Starting from the atomic elements and build molecules, organisms, pages on top of it, please refer to the available elments and classes from this full page [demo](https://s3-eu-west-1.amazonaws.com/bonusway-ui/index.html).
+Starting from the atomic elements and build molecules, organisms, pages on top of it, please refer to the available elments and classes from this full page.
+
+## Demo
+
+[Click here](https://s3-eu-west-1.amazonaws.com/bonusway-ui/index.html)
 
 ##  Architecture 
 
