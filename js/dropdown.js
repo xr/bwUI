@@ -340,7 +340,9 @@ $.fn.dropdown = function (parameters) {
                 $module.removeClass('active');
             },
             toggle: function () {
-                $module.toggleClass('active');
+                if (!$module.hasClass('disabled')) {
+                    $module.toggleClass('active');
+                }
             }
         }
         // initialize
