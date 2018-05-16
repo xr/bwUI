@@ -54,5 +54,4 @@
 ///   }
 @mixin text-formatter($type: text) {
   @include font-size-modifier($type);
-  line-height: 180%;
 }

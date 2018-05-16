@@ -4,7 +4,9 @@ Starting from the atomic elements and build molecules, organisms, pages on top o
 
 ## Demo
 
-[Click here](https://s3-eu-west-1.amazonaws.com/bonusway-ui/index.html)
+[Full page preview](https://s3-eu-west-1.amazonaws.com/bonusway-ui/index.html)
+
+[Documents](https://s3-eu-west-1.amazonaws.com/bonusway-ui/doc/index.html)
 
 ##  Architecture 
 

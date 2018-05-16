@@ -72,3 +72,17 @@
     opacity: 1;
     visibility: visible;
 }
+
+/// Media query manager mixin
+///
+/// @author liang@bonusway.com
+///
+/// @param {property} $breakpoint - the property name from `$gl-mq-list` map.
+@mixin respond($breakpoint) {
+    @if not map-has-key($gl-mq-list, $breakpoint) {
+        @error "Invalid breakpoint: `#{$breakpoint}`.";
+    } @else {
+        $width: map-get($gl-mq-list, $breakpoint);
+        @media only screen and (max-width: $width) { @content };
+    }
+}
