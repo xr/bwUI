@@ -1,3 +1,9 @@
+/// This function can be used to get the color from the predefined color palette, to avoid color miss usage.
+///
+/// @author liang@bonusway.com
+///
+/// @param {property} $color - the main name from `$colors` map.
+/// @param {property} $variation - the variation name from `$color-variations` map.
 @function color($color, $variation: false) {
 
     @if map-has-key($colors, $color) {
