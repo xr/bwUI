@@ -14,10 +14,6 @@ html {
     // default 16px * 0.625 = 10px
     font-size: 62.5%;
 
-    @include respond(lg) {
-        font-size: 75%; //1 rem = 12px, 12/16 = 75%
-    }
-
     @include respond(sm) {
         font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
     }
