@@ -2,7 +2,6 @@
 
 .dropdown {
     position: relative;
-    min-height: $dropdown-height;
 
     &.disabled {
         .dropdown__search {
@@ -32,6 +31,7 @@
 
     &.active &__menu {
         @include visible();
+        display: block;
         cursor: pointer;
     }
 
@@ -52,7 +52,11 @@
     &__menu {
         @include transition();
         @include invisible();
+        display: none;
         border: 1px solid color(grey, lighter);
+        background: color(white);
+        position: absolute;
+        width: 100%;
         outline: 0;
         border-top: 0;
         max-height: 40rem;

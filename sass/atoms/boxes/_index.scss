@@ -1,0 +1,53 @@
+@import '_variables';
+
+.box {
+    display: flex;
+    position: relative;
+    height: $box-height;
+    align-items: center;
+    border-radius: $border-radius;
+    border: 1px solid color(grey, lighter);
+    cursor: pointer;
+    
+    &__left {
+        flex-basis: 12rem;
+        flex-grow: 1;
+        height: $box-height;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: 60%;
+            display: block;
+        }
+    }
+
+    &__right {
+        height: $box-height;
+        flex-grow: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around;
+    }
+
+    &.selected {
+        border: 1px solid color(green);
+        &::after {
+            font-family: 'icomoon' !important;
+            content: "\53";
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            width: 3rem;
+            height: 3rem;
+            background: #15DB95;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 3rem;
+            position: absolute;
+            top: -1.5rem;
+            right: -1.5rem;
+        }
+    }
+}
