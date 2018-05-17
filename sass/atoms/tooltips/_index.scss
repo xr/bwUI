@@ -2,7 +2,6 @@
 @import '_helpers';
 
 .tooltip {
-    max-width: $tooltip-max-width;
     position: relative;
 
     &:before {
