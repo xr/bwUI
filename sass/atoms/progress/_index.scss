@@ -1,0 +1,24 @@
+@import '_variables';
+
+.progress {
+    $gp: &;
+    width: 100%;
+    height: $progress-bar-height;
+    background-color: color(light-grey, dark);
+    border-radius: $progress-bar-radius;
+
+    &__status {
+        border-radius: $progress-bar-radius;
+        background-color: color(blue);
+        box-shadow: 3px 0 0 0 white;
+        transition: width .5s ease;
+        height: $progress-bar-height;
+    }
+
+    &--lg {
+        height: $progress-bar-height-lg;
+        #{$gp}__status {
+            height: $progress-bar-height-lg;
+        }
+    }
+}

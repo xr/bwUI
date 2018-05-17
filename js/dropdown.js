@@ -80,7 +80,6 @@ $.fn.dropdown = function (parameters) {
                 keyboardEvents: function () {
                     module.debug('Binding keyboard events');
                     $module.on('keydown' + eventNamespace, module.event.keydown);
-                    
                     // if the input is for search purpose
                     // todo:
                     // if (module.has.search()) {
@@ -157,6 +156,7 @@ $.fn.dropdown = function (parameters) {
                       $items.removeClass('selected');
                       $item.addClass('selected');
                       $search.val($item.text());
+                      $search.text($item.text());
                   }
             },
             event: {
@@ -168,9 +168,8 @@ $.fn.dropdown = function (parameters) {
                     }
                 },
                 keydown: function (event) {
-                    var pressedKey = event.which,
-                    isShortcutKey = module.is.inObject(pressedKey, keys);
-
+                    var pressedKey = event.which;
+                    var isShortcutKey = module.is.inObject(pressedKey, keys);
                     if (isShortcutKey && module.is.focusedOnSearch) {
                         module.debug(event);
                         var $currentlySelected = $items.not(selector.unselectable).filter('.' + className.selected).eq(0);
@@ -183,8 +182,6 @@ $.fn.dropdown = function (parameters) {
                         var inVisibleMenu = ($menu.css('opacity') == 1);
                         var hasSelectedItem = $selectedItem.length > 0;
                         var $nextItem;
-
-                        console.log($currentlySelected.text());
 
                         if (pressedKey == keys.upArrow) {
                             $nextItem = (hasSelectedItem && inVisibleMenu) 
@@ -378,7 +375,7 @@ $.fn.dropdown.settings = {
         downArrow: 40
     },
     selector: {
-        search: '.dropdown__search',
+        search: '.dropdown__placeholder',
         menu: '.dropdown__menu',
         item: '.dropdown__item',
         unselectable: '.disabled'

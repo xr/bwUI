@@ -1,15 +1,16 @@
 @import '_variables';
 
 .dropdown {
+    $gp: &;
     position: relative;
     z-index: 99;
 
     &.disabled {
-        .dropdown__search {
+        #{$gp}__search, #{$gp}__placeholder {
             cursor: not-allowed;
             background: color(light-grey);
     
-            .dropdown__search::placeholder {
+            #{$gp}__search::placeholder, #{$gp}__placeholder::placeholder {
                 color: color(grey);
             }
         }
@@ -17,6 +18,18 @@
         [class^="icon-"]::before {
             color: color(grey);
         }
+    }
+
+    &__placeholder {
+        cursor: pointer;
+        color: color(navy);
+        border: 1px solid color(grey, lighter);
+        height: $input-height;
+        line-height: $input-height;
+        border-radius: $border-radius;
+        font-size: font-size(text);
+        width: 100%;
+        text-indent: $text-indent;
     }
     
     [class^="icon-"] {
