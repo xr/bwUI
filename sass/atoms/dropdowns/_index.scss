@@ -2,6 +2,7 @@
 
 .dropdown {
     position: relative;
+    z-index: 99;
 
     &.disabled {
         .dropdown__search {
