@@ -1,0 +1,6 @@
+@keyframes spinner-spin {
+    to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spinner-spin {
+    to { -webkit-transform: rotate(360deg); }
+}

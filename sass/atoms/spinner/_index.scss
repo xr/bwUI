@@ -1,0 +1,12 @@
+@import '_helpers';
+
+.spinner {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    border: 3px solid color(gray);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spinner-spin 1s ease-in-out infinite;
+    -webkit-animation: spinner-spin 1s ease-in-out infinite;
+}
