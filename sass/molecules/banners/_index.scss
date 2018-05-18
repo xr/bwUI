@@ -1,0 +1,13 @@
+@import '_variables';
+
+.banner {
+    width: 100%;
+    background-size: cover;
+    height: $banner-height;
+    padding: 3 * $gap;
+    
+    &__description {
+        max-width: 33%;
+        margin: 2 * $gap 0;
+    }
+}
